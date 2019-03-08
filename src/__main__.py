@@ -1,4 +1,6 @@
 from flask import Flask, render_template, redirect, request
+from src.faceLogin import faceLogin
+
 
 flask_app = Flask(__name__, template_folder='templates/')
 flask_app.config['JSON_AS_ASCII'] = False
