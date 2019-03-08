@@ -1,9 +1,10 @@
 from flask import Flask, render_template, redirect, request
+import os
 
 app = Flask(__name__, template_folder='templates/')
 app.config['JSON_AS_ASCII'] = False
 
-@flask_app.route('/')
+@app.route('/')
 def index():
 #  return render_template('index.html',params=None)
 	return "<h1>Home Page</h1>"
