@@ -1,5 +1,5 @@
 """
-Pricing function
+Pricing functions
 """
 
 BASE_FEE = 5
@@ -35,6 +35,13 @@ def get_price(car, time):
     return coefficient*BASE_FEE, coefficient*FEE_PER_KM
 
 
+def get_auction_winners(cars, bids):
+    k = len(cars)
+    winning_bids = sorted(bids, key=lambda k: k['value'], reverse=True)[:k]
+    fee = winning_bids[-1]['value']
+    return [bid['person'] for bid in winning_bids], fee
+
+
 cars = [
     {
         'position': [47.4245, 9.3767],
@@ -48,8 +55,39 @@ cars = [
 
 times = ['08:00', '13:00', '18:00']
 
+bids = [
+    {
+        'person': 'John',
+        'value': 10
+    },
+    {
+        'person': 'Jack',
+        'value': 11
+    },
+    {
+        'person': 'Jane',
+        'value': 20
+    },
+    {
+        'person': 'Bob',
+        'value': 22
+    },
+    {
+        'person': 'Bill',
+        'value': 50
+    },
+]
+
 print('Pricing example')
 for car in cars:
     for time in times:
         print('Price for car at position {}N {}E, at time {} is: base fee {:.2f}, fee per km {:.2f}'.format(
             *car['position'], time, *get_price(car, time)))
+
+print('Auction example')
+for bid in bids:
+    print('{} has bid {}CHF'.format(bid['person'],bid['value']))
+
+winners, fee = get_auction_winners(cars,bids)
+for w in winners:
+    print('{} has won the auction and will pay {}CHF'.format(w,fee))
