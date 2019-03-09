@@ -19,6 +19,10 @@ def index():
 		html += doc['name'] + '<br>'
 	return html
 
+@app.route('/signup')
+def signup():
+	return render_template('registration.html',params=None)
+
 if __name__ == '__main__':
 	port = int(os.environ.get("PORT", 8081))
 	app.run(host='0.0.0.0', port=port, debug =True)
