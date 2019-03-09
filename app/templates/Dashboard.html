@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" id="arreglos">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="../static/images/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Volvo Company
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin=""/>
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+  crossorigin=""></script>
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script src="../static/js/data.js" >
+</script>
+
+
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../static/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+  <link href="../static/css/demo.css" rel="stylesheet" />
+</head>
+<style>
+  .at-floating-card__close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #555;
+}
+
+.at-floating-card {
+  min-width: 300px;
+  z-index: 999999;
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+  display: flex;
+  flex-direction: row;
+  background: #ffffff;
+  max-width: 300px;
+  border: 1px solid #eeeeee;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  padding: 15px 20px;
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.at-floating-card__thumbnail {
+  border: 1px solid #eeeeee;
+  border-radius: 100%;
+  margin: 0 20px 0 0;
+  padding: 1px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.at-floating-card__thumbnail img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0%;
+}
+.at-floating-card__title {
+  margin: 10px;
+  padding: 0;
+  color: #333;
+  font-size: 16px !important;
+  font-weight: 700;
+  line-height: 1;
+}
+.at-floating-card__sub-title {
+  margin: 0 0 6px;
+  padding: 0;
+  color: #999999;
+  font-size: 12x !important;
+  font-weight: 700;
+}
+.at-floating-card__sub-title a {
+  color: #cccccc;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.at-floating-card__description {
+  margin: 0 0 6px;
+  padding: 0;
+  color: #5e5e5e;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 600;
+}
+.at-floating-card__footer {
+  color: #666666;
+  font-size: 12px;
+  font-weight: 600;
+}
+.at-floating-card__footer span {
+  margin: 0 4px;
+}
+.at-floating-card__footer a {
+  color: #ef6b1f;
+  font-size: 10px;
+  text-decoration: none;
+}
+.at-floating-card__footer a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 480px) {
+  .at-floating-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .at-floating-card__thumbnail {
+    margin: 0 0 20px;
+  }
+}
+
+</style>
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="white" data-active-color="danger">
+      <div class="logo">
+        <a class="simple-text logo-mini">
+          <div class="logo-image-small">
+            <img src="../static/images/logo.jpg">
+          </div>
+        </a>
+        <a class="simple-text logo-normal">
+          Administrator
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="active ">
+            <a href="">
+              <i class="fas fa-tachometer-alt"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li>
+              <a href="">
+                <i class="fas fa-car-crash"></i>
+              <p>Notifications</p>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:parseJSONtoListCARS()">
+              <i class="fas fa-car"></i>
+              <p>Car List</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+
+
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler" id="boto">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand">Volvo Dashboard - Zurich </a>
+          </div>
+          <div class="collapse navbar-collapse justify-content-end" id="navigation">
+
+          </div>
+        </div>
+      </nav>
+      <script>
+        var nav = document.getElementById("boto");
+        nav.addEventListener("click",handleclick);
+        var element = document.getElementById("arreglos")
+        b = false 
+        function handleclick(){
+          if(!b){
+            element.classList.add("perfect-scrollbar-off");
+            element.classList.add("nav-open");
+            b = true
+          }
+          else {
+            element.classList.remove("perfect-scrollbar-off");
+            element.classList.remove("nav-open");
+            b = false
+
+          }
+        }
+      </script>
+
+      <div class="content">
+          <div class="container-fluid">
+              <div class="card card-map">
+                  <div class="map" style="overflow:hidden;">
+                      <div id="mapid"></div>
+                      <p id="showData" style ="visibility: hidden;"></p>
+                      <div class="at-floating-card" id="amagada"  style="visibility: hidden; justify-content: center;">
+                          <img id="pic1" style="visibility:hidden; height:100%; width: 100%;"> </img>
+
+                          <div style ="background-color: #ee8012; margin:10px; border-radius: 10%;position:absolute;
+                          bottom:0; display: block;justify-content: center;">
+                          <h2 class="at-floating-card__title" id="nomcotxe" style="text-align: center;"> Default</h2>
+                          </div>
+                          <a class="at-floating-card__close"  onclick="$(this).parent().remove(); return false;"><i class="fa fa-remove"></i></a>
+                         <div class="at-floating-card__content" style="padding-top:10px">
+                               <p class="at-floating-card__description" id="place_car"> </p>
+                         <p class="at-floating-card__description"> </p>
+                       <p class="at-floating-card__description"> </p>
+                         </div>
+                       </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+
+<style>
+       th,td{
+    text-align:center;
+    }
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+    #mapid{
+        position: absolute; top: 0; bottom: 0; left: 0; right: 0; content: ''; }
+   
+</style>
+
+    </body>
+
+    
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+    crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="../static/js/perfect-scrollbar.jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+  crossorigin=""></script>
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script src="../static/js/leaflet.rotatedMarker.js"></script>
+
+
+  <script>
+    
+    var mymap = L.map("mapid").setView([47.371637, 8.542088, -0.09], 13);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoiYWRyaWFjYWJlemEiLCJhIjoiY2p0MWNmbzI1MXYzMDQzb2RqM21xcGJlaSJ9.5JCl4GXfA3ZQnZcCPsgZGw'
+}).addTo(mymap);
+
+
+
+// Compute the route given the destination point.
+function getRoute(latlng) {
+  route = L.Routing.control({
+    waypoints: [
+      L.latLng(selectedCar.lat, selectedCar.lng),
+      L.latLng(latlng.lat, latlng.lng)
+    ],
+    routeWhileDragging: true,
+    show: false,
+    createMarker: function(i, start) {
+      if (i === 0) {
+        return null;
+      } else {
+        return L.marker(start.latLng);
+      }
+    }
+  }).addTo(mymap);
+}
+ 
+
+const carIcon = L.icon({
+  iconUrl: "../static/images/car.png",
+  iconSize: [38, 38] // size of the icon
+});
+const greenCarIcon = L.icon({
+  iconUrl: "../static/images/carGreen.png",
+  iconSize: [38, 38] // size of the icon
+});
+
+let selectedCar;
+let street;
+let destination;
+let route;
+// Bind icons to map at coordinates of cars.
+const icons = cars.map((c, i) => {
+  var popcontainer = L.DomUtil.create("div");
+  popcontainer.style.cssText =
+    "display:flex;align-items:center;flex-direction:column;";
+  let name = popcontainer.appendChild(document.createElement("p"));
+  name.style.margin = "0px";
+  name.style.fontSize = "16px";
+  name.innerHTML = c.name;
+  let selectButton = createButton("Select this car", popcontainer);
+  selectButton.onclick = () => {
+    if (route) {
+      mymap.removeControl(route);
+    }
+    if (selectedCar != null) {
+      // if a car is already selected, change its color back to black.
+      for (let i = 0; i < cars.length; i++) {
+        if (cars[i].name === selectedCar.name) {
+          icons[i].setIcon(carIcon);
+        }
+      }
+    }
+    mymap.closePopup();
+    selectedCar = c;
+    updatePhoto(selectedCar.name)
+    updateCar(selectedCar.name)
+    
+    document.getElementById('amagada').style.visibility="visible";
+   
+    var latlng = L.latLng(c.lat,c.lng);
+    // getAdress(c);
+    icons[i].setIcon(greenCarIcon); 
+  };
+  return L.marker([c.lat, c.lng], { icon: carIcon })
+    .addTo(mymap)
+    .bindPopup(popcontainer);
+});
+// Button when map is clicked to get destination.
+function createButton(label, container) {
+  var btn = L.DomUtil.create("button", "", container);
+  btn.setAttribute("type", "button");
+  btn.innerHTML = label;
+  return btn;
+}
+
+function updateCar(name){
+  document.getElementById("nomcotxe").innerHTML = name;
+  // document.getElementById("place_car").innerHTML 
+}
+
+function updatePhoto(name){
+
+    name = "../static/images/cars/"+ name +".jpg";
+    name = name.replace(" ","%20");
+    console.log(name);
+    image = document.getElementById("pic1");
+    image.src = name; 
+    image.style.visibility="visible";
+}
+  
+  
+function rotateIcon(icon, angle) {
+  icon.setRotationAngle(angle);
+}
+
+function moveCar(i) {
+  let index = cars[i].startIndex;
+  let increasing = index < fakeRoute.length;
+  setInterval(() => {
+    if (increasing) {
+      index += 1;
+    } else {
+      index -= 1;
+    }
+    let [oldlat, oldlng] = [cars[i].lat, cars[i].lng];
+    [cars[i].lat, cars[i].lng] = [fakeRoute[index].lat, fakeRoute[index].lng];
+    icons[i].setLatLng(new L.LatLng(cars[i].lat, cars[i].lng));
+    let angle =
+      (Math.atan2(cars[i].lng - oldlng, cars[i].lat - oldlat) * 180) / Math.PI;
+    rotateIcon(icons[i], angle);
+    if (index === fakeRoute.length - 1) {
+      increasing = false;
+    } else if (index === 0) {
+      increasing = true;
+    }
+  }, 20);
+}
+
+moveCar(0);
+
+
+function parseJSONtoListCARS(){
+  //EN TEORIA EL JSON ESTARIA EN DATA TODO COGER EL JSON
+  var col = []
+  for (var i = 0; i < data.length; i++) {
+    for (var key in data[i]) {
+        col.push(key);
+    }
+  }
+
+    var table = document.createElement("table");
+    var tr = table.insertRow(-1);
+
+    for(var i = 0; i< col.length; ++i){
+      var th = document.createElement("th");      // TABLE HEADER.
+      th.innerHTML = col[i];
+      tr.appendChild(th);
+    }
+     // ADD JSON DATA TO THE TABLE AS ROWS.
+    for (var i = 0; i < data.length; i++) {
+
+      tr = table.insertRow(-1);
+
+      for (var j = 0; j < col.length; j++) {
+          var tabCell = tr.insertCell(-1);
+          tabCell.innerHTML = data[i][col[j]];
+      }
+    }
+    var divContainer = document.getElementById("showData");
+    divContainer.innerHTML = "";
+    divContainer.appendChild(table);
+    document.getElementById('showData').style.visibility = 'visible';
+    document.getElementById('mapid').style.visibility = 'hidden';
+ 
+  }
+
+  
+
+
+
+
+</script>
+
+
+
+</body>
+
+</html> 
