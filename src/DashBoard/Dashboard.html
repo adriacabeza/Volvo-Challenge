@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="arreglos">
 
 <head>
   <meta charset="utf-8" />
@@ -10,7 +10,7 @@
     Volvo Company
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
- 
+
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
@@ -70,28 +70,46 @@
       </div>
     </div>
     <div class="main-panel">
-      
 
+
+      <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
+              <button type="button" class="navbar-toggler" id="boto">
                 <span class="navbar-toggler-bar bar1"></span>
                 <span class="navbar-toggler-bar bar2"></span>
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Volvo Dashboard - Zurich </a>
+            <a class="navbar-brand">Volvo Dashboard - Zurich </a>
           </div>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-         
-            
+
           </div>
         </div>
       </nav>
+      <script>
+        var nav = document.getElementById("boto");
+        nav.addEventListener("click",handleclick);
+        var element = document.getElementById("arreglos")
+        b = false 
+        function handleclick(){
+          if(!b){
+            element.classList.add("perfect-scrollbar-off");
+            element.classList.add("nav-open");
+            b = true
+          }
+          else {
+            element.classList.remove("perfect-scrollbar-off");
+            element.classList.remove("nav-open");
+            b = false
 
-  
+          }
+        }
+      </script>
+
       <div class="content">
           <div class="container-fluid">
               <div class="card card-map">
@@ -104,23 +122,22 @@
   </div>
 
 
-    
-       
+
+
 <style>
     #mapid{
         position: absolute; top: 0; bottom: 0; left: 0; right: 0; content: ''; }
    
-
 </style>
-    
+
     </body>
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
     integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
     crossorigin=""></script>
-         
-     
- 
- 
+
+
+
+
   <script src="assets/js/core/jquery.min.js"></script>
   <script src="assets/js/core/popper.min.js"></script>
   <script src="assets/js/core/bootstrap.min.js"></script>
@@ -139,12 +156,7 @@
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1IjoiYWRyaWFjYWJlemEiLCJhIjoiY2p0MWNmbzI1MXYzMDQzb2RqM21xcGJlaSJ9.5JCl4GXfA3ZQnZcCPsgZGw'
 }).addTo(mymap);
-
-
-
-
   //APARTIR D'AQUï es den william
-
 // L.tileLayer(
 //   "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}",
 //   {
@@ -156,7 +168,6 @@
 //       "pk.eyJ1Ijoic3RhcnRoYWNrcHJpbmdsZXMiLCJhIjoiY2p0MHE0Mnd1MDB6NzN5cGdxczVoZmNyNiJ9.i0AHQnmU9XumQVTaUE-7NA"
 //   }
 // ).addTo(mymap);
-
 const carIcon = L.icon({
   iconUrl: "car.png",
   iconSize: [38, 38] // size of the icon
@@ -165,7 +176,6 @@ const greenCarIcon = L.icon({
   iconUrl: "carGreen.png",
   iconSize: [38, 38] // size of the icon
 });
-
 // Fake route coordinates
 const fakeRoute = [
   [8.53684, 47.374991],
@@ -250,7 +260,6 @@ const fakeRoute = [
   [8.577955, 47.3489],
   [8.577051, 47.344628]
 ];
-
 const cars = [
   {
     lng: 8.572739,
@@ -303,11 +312,9 @@ const cars = [
     name: "Volvo V40"
   }
 ];
-
 let selectedCar;
 let route;
 let destination;
-
 // Bind icons to map at coordinates of cars.
 const icons = cars.map((c, i) => {
   var popcontainer = L.DomUtil.create("div");
@@ -338,7 +345,6 @@ const icons = cars.map((c, i) => {
     .addTo(mymap)
     .bindPopup(popcontainer);
 });
-
 // Button when map is clicked to get destination.
 function createButton(label, container) {
   var btn = L.DomUtil.create("button", "", container);
@@ -346,10 +352,7 @@ function createButton(label, container) {
   btn.innerHTML = label;
   return btn;
 }
-
-
-
   </script>
 </body>
 
-</html>
+</html> 
