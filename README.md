@@ -41,9 +41,6 @@ As we already mentioned before the possibilities are infinite. We
 - Sockets  **TODO**
 - Route Optimization (taking someone and share the car and get the reward, the gas stuff, pricing, predict stuff (number of cars we are gonna need or something, use weather) **STARTED**
 
-
-
-
 ## Development
 #### Requirements
 Python 3.5+
@@ -72,3 +69,8 @@ pip3 install -r requirements.txt
 ```bash
 http://localhost:8081/
 ```
+
+
+## More in detail
+- [faceLogin](https://github.com/adriacabeza/Volvo/tree/master/src/faceLogin)
+- [driverLicense & utils](https://github.com/adriacabeza/Volvo/blob/master/src/utils/Utils.md)
