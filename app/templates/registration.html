@@ -14,6 +14,24 @@
 
   {% include "header.html" %} 
   <form action="" method="POST" enctype="multipart/form-data">
+    <div class="row" style="margin-top: 20px;">
+      <div class="input-field col s12">
+        <input id="name" name="name" type="text" class="validate white-text">
+        <label for="name">Name</label>
+      </div>
+    </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" name="email" type="email" class="validate white-text">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" name="password" class="validate white-text">
+          <label for="password">Password</label>
+        </div>
+      </div>
     <div class="row" style="margin-top: 30px;">
       <div class="col s12 m7">
         <div class="card small">
