@@ -1,6 +1,7 @@
-# Utils
+# Driver License detection 
+- To be able to detect if a driver license and not just a random ID card or a falsification; we have used Optical character recognition and a bag of words (using some tolerance of error within every word) that represent some of the words that it should contain the image. 
 
-- A tool that uses OCR to extract the text from the driver license and check most of the text to see if it is a really license
-- Function to delete temporary folders
-  - I guess that whenever we take selfies of the users we are going to delete those folders. Also after confirming the driver license is fine we can delete it too.
-- A function to compress a picture (we must use it if we want to use several pictures)
+### Other useful functions
+- A function to delete temporary folders, we will use it  whenever our customer take selfies to login. Also after confirming the driver license is fine we can delete it too.
+
+- A function to compress a picture (we must use it if we want to use several pictures in our system). It will be used everytime a new person is registrated. 
