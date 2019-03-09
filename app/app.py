@@ -1,5 +1,5 @@
-from pymongo import MongoClient
-from pymongo.errors import DuplicateKeyError
+from flask_pymongo import MongoClient
+from flask_pymongo.errors import DuplicateKeyError
 import os
 from os.path import join, dirname, realpath
 import faceLoginLogin
