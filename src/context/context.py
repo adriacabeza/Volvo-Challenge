@@ -4,9 +4,15 @@ class Context:
     self.users = users
     self.cars = cars
 
+  def give_price_to_user(self,user_id):
+    return 0
+  
+  def predict_price(self):
+    return 0
+
 
 class Car:
-  def __init__(self,id=0,lat=0,available=True,gas=0,value=0):
+  def __init__(self,id=0,lat=0,log=0,available=True,gas=0,value=0):
     self.id = id
     self.position= {'lat':lat,'log':log}
     self.available= available
@@ -23,7 +29,6 @@ class Parking:
 
   
   
-
 class User:
   def __init__(self,route, id=0,car=None,destination=None):
     self.id = id
