@@ -2,7 +2,6 @@ from flask import Flask, render_template, redirect, request
 from pymongo import MongoClient
 import os
 from os.path import join, dirname, realpath
-from werkzeug.utils import secure_filename
 
 mongo_uri = os.environ.get("MONGODB_URI", "mongodb://heroku_xv3vfwld:l3f3d2fv550d1akktp8m9uqj8e@ds119380.mlab.com:19380/heroku_xv3vfwld")
 

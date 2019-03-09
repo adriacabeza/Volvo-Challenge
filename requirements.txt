@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-
-Flask-Cors==3.0.6
-=======
 Flask-Cors==3.0.6
 pymongo
->>>>>>> laca
 Click==7.0
 dlib==19.16.0
 face-recognition==1.2.3
@@ -19,7 +14,3 @@ Pillow==5.4.1
 pkg-resources==0.0.0
 pytesseract==0.2.6
 Werkzeug==0.14.1
-<<<<<<< HEAD
-pymongo
-=======
->>>>>>> laca
