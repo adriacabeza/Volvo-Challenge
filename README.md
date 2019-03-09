@@ -1,7 +1,7 @@
 # VOLVO
 
 ## PRO
-TODO
+- We have automatically a way to detect ...
 
 ## CONS
 TODO
