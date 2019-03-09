@@ -5,22 +5,64 @@
   <meta charset="utf-8">
   <title>Map</title>
   <style>
+    body {
+      height: 95vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      margin: auto;
+      text-align: center;
+      margin-bottom: 10px;
+    }
     #mapid {
-      height: 97vh;
-      width: 97vw;
+      flex-grow: 10;
+      width: 100%;
+    }
+    #destination {
+      opacity: 0;
+      margin-top: 10px;
+    }
+    h2 {
+      margin: -5px 0px -10px 0px;
+    }
+    #confirm {
+      opacity: 0;
+      width: 100px;
+      margin-top: 10px;
     }
   </style>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
     crossorigin="" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
     crossorigin=""></script>
   <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
 
 </head>
 
 <body>
+  <h1>Book a car</h1>
+  <ol>
+    <li>Pick a car</li>
+    <li>Select destination</li>
+  </ol>
   <div id="mapid"></div>
+  <div id="destination">
+    <h2>
+      Destination
+    </h2>
+    <p id="destinationAddress">
+      placeholder
+    </p>
+</div>
+  <button id="confirm">Confirm</button>
 </body>
 
 <script src="script.js"></script>
