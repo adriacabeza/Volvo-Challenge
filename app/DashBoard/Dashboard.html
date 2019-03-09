@@ -25,14 +25,110 @@
   crossorigin=""></script>
 <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
 <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-
+<script src="data.js" >
+</script>
 
 
   <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
   <link href="assets/demo/demo.css" rel="stylesheet" />
 </head>
+<style>
+  .at-floating-card__close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #555;
+}
 
+.at-floating-card {
+  min-width: 300px;
+  z-index: 999999;
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+  display: flex;
+  flex-direction: row;
+  background: #ffffff;
+  max-width: 300px;
+  border: 1px solid #eeeeee;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  padding: 15px 20px;
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.at-floating-card__thumbnail {
+  border: 1px solid #eeeeee;
+  border-radius: 100%;
+  margin: 0 20px 0 0;
+  padding: 1px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.at-floating-card__thumbnail img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0%;
+}
+.at-floating-card__title {
+  margin: 10px;
+  padding: 0;
+  color: #333;
+  font-size: 16px !important;
+  font-weight: 700;
+  line-height: 1;
+}
+.at-floating-card__sub-title {
+  margin: 0 0 6px;
+  padding: 0;
+  color: #999999;
+  font-size: 12x !important;
+  font-weight: 700;
+}
+.at-floating-card__sub-title a {
+  color: #cccccc;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.at-floating-card__description {
+  margin: 0 0 6px;
+  padding: 0;
+  color: #5e5e5e;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 600;
+}
+.at-floating-card__footer {
+  color: #666666;
+  font-size: 12px;
+  font-weight: 600;
+}
+.at-floating-card__footer span {
+  margin: 0 4px;
+}
+.at-floating-card__footer a {
+  color: #ef6b1f;
+  font-size: 10px;
+  text-decoration: none;
+}
+.at-floating-card__footer a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 480px) {
+  .at-floating-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .at-floating-card__thumbnail {
+    margin: 0 0 20px;
+  }
+}
+
+</style>
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
@@ -115,6 +211,20 @@
               <div class="card card-map">
                   <div class="map" style="overflow:hidden;">
                       <div id="mapid"></div>
+                      <div class="at-floating-card" id="amagada"  style="visibility: hidden; justify-content: center;">
+                          <img id="pic1" style="visibility:hidden; height:100%; width: 100%;"> </img>
+
+                          <div style ="background-color: #ee8012; margin:10px; border-radius: 10%;position:absolute;
+                          bottom:0; display: block;justify-content: center;">
+                          <h2 class="at-floating-card__title" id="nomcotxe" style="text-align: center;"> Default</h2>
+                          </div>
+                          <a class="at-floating-card__close"  onclick="$(this).parent().remove(); return false;"><i class="fa fa-remove"></i></a>
+                         <div class="at-floating-card__content" style="padding-top:10px">
+                               <p class="at-floating-card__description" id="place_car"> </p>
+                         <p class="at-floating-card__description"> </p>
+                       <p class="at-floating-card__description"> </p>
+                         </div>
+                       </div>
                   </div>
               </div>
           </div>
@@ -144,30 +254,56 @@
   <script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+  crossorigin=""></script>
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script src="leaflet.rotatedMarker.js"></script>
+
+
   <script>
     
     var mymap = L.map("mapid").setView([47.371637, 8.542088, -0.09], 13);
-    // var geocoder = L.Control.Geocoder.nominatim();
- 
-    
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1IjoiYWRyaWFjYWJlemEiLCJhIjoiY2p0MWNmbzI1MXYzMDQzb2RqM21xcGJlaSJ9.5JCl4GXfA3ZQnZcCPsgZGw'
 }).addTo(mymap);
-  //APARTIR D'AQUï es den william
-// L.tileLayer(
-//   "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}",
-//   {
-//     attribution:
-//       'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-//     maxZoom: 18,
-//     id: "mapbox.streets",
-//     accessToken:
-//       "pk.eyJ1Ijoic3RhcnRoYWNrcHJpbmdsZXMiLCJhIjoiY2p0MHE0Mnd1MDB6NzN5cGdxczVoZmNyNiJ9.i0AHQnmU9XumQVTaUE-7NA"
-//   }
-// ).addTo(mymap);
+
+
+
+// Compute the route given the destination point.
+function getRoute(latlng) {
+  route = L.Routing.control({
+    waypoints: [
+      L.latLng(selectedCar.lat, selectedCar.lng),
+      L.latLng(latlng.lat, latlng.lng)
+    ],
+    routeWhileDragging: true,
+    show: false,
+    createMarker: function(i, start) {
+      if (i === 0) {
+        return null;
+      } else {
+        return L.marker(start.latLng);
+      }
+    }
+  }).addTo(mymap);
+}
+ 
+// var geocoder = new L.Control.Geocoder.Nominatim();
+    
+//     function getAdress(c){
+//       console.log(geocoder.reverse(L.latLng(c.lat,c.lng),3, function(error, result){
+//         L.marker(result.latlng).addTo(map).bindPopup(result.address).openPopup();
+//       }));
+//     };
+  
+
 const carIcon = L.icon({
   iconUrl: "car.png",
   iconSize: [38, 38] // size of the icon
@@ -176,145 +312,11 @@ const greenCarIcon = L.icon({
   iconUrl: "carGreen.png",
   iconSize: [38, 38] // size of the icon
 });
-// Fake route coordinates
-const fakeRoute = [
-  [8.53684, 47.374991],
-  [8.537446, 47.375113],
-  [8.537148, 47.375663],
-  [8.538688, 47.377254],
-  [8.54382, 47.376391],
-  [8.544428, 47.379361],
-  [8.545379, 47.378802],
-  [8.547295, 47.375369],
-  [8.549012, 47.375745],
-  [8.549553, 47.374735],
-  [8.55237, 47.374773],
-  [8.553359, 47.375987],
-  [8.552843, 47.377149],
-  [8.558202, 47.37541],
-  [8.560014, 47.37655],
-  [8.556334, 47.378956],
-  [8.551755, 47.382316],
-  [8.549021, 47.383664],
-  [8.548393, 47.384488],
-  [8.548498, 47.385919],
-  [8.54769, 47.386742],
-  [8.544311, 47.387608],
-  [8.538942, 47.391381],
-  [8.534833, 47.39143],
-  [8.531629, 47.393036],
-  [8.526872, 47.39439],
-  [8.525316, 47.394271],
-  [8.524882, 47.395016],
-  [8.525466, 47.39465],
-  [8.523771, 47.392675],
-  [8.519464, 47.395156],
-  [8.520625, 47.394959],
-  [8.524712, 47.393657],
-  [8.524331, 47.392829],
-  [8.510534, 47.378507],
-  [8.493118, 47.385827],
-  [8.492906, 47.38468],
-  [8.494383, 47.384011],
-  [8.491598, 47.381181],
-  [8.498596, 47.377597],
-  [8.503946, 47.373221],
-  [8.502431, 47.371657],
-  [8.501262, 47.368661],
-  [8.502868, 47.364368],
-  [8.507209, 47.359826],
-  [8.507612, 47.359377],
-  [8.505324, 47.358344],
-  [8.502426, 47.36125],
-  [8.504659, 47.36246],
-  [8.502868, 47.364368],
-  [8.501249, 47.368752],
-  [8.502431, 47.371657],
-  [8.503946, 47.373221],
-  [8.499365, 47.377328],
-  [8.510567, 47.378073],
-  [8.513943, 47.38194],
-  [8.522142, 47.390291],
-  [8.523292, 47.390715],
-  [8.524809, 47.390522],
-  [8.536737, 47.383415],
-  [8.538093, 47.38138],
-  [8.53744, 47.379499],
-  [8.541372, 47.378284],
-  [8.541692, 47.374429],
-  [8.537412, 47.374679],
-  [8.535419, 47.373164],
-  [8.53509, 47.373712],
-  [8.538688, 47.377254],
-  [8.543096, 47.376811],
-  [8.54357, 47.376374],
-  [8.544451, 47.376725],
-  [8.548456, 47.370452],
-  [8.553446, 47.366827],
-  [8.552369, 47.365445],
-  [8.556414, 47.364012],
-  [8.562158, 47.360716],
-  [8.568442, 47.360082],
-  [8.572739, 47.357397],
-  [8.576178, 47.353296],
-  [8.577955, 47.3489],
-  [8.577051, 47.344628]
-];
-const cars = [
-  {
-    lng: 8.572739,
-    lat: 47.357397,
-    name: "Volvo V40"
-  },
-  {
-    lng: 8.544311,
-    lat: 47.387608,
-    name: "Volvo XC40"
-  },
-  {
-    lng: 8.548498,
-    lat: 47.385919,
-    name: "Volvo XC90"
-  },
-  {
-    lng: 8.502431,
-    lat: 47.371657,
-    name: "Volvo S90"
-  },
-  {
-    lng: 8.547295,
-    lat: 47.375369,
-    name: "Volvo V90"
-  },
-  {
-    lng: 8.498596,
-    lat: 47.377597,
-    name: "Volvo XC60"
-  },
-  {
-    lng: 8.498596,
-    lat: 47.377597,
-    name: "Volvo S60"
-  },
-  {
-    lng: 8.502426,
-    lat: 47.36125,
-    name: "Volvo V60"
-  },
-  {
-    lng: 8.519464,
-    lat: 47.395156,
-    name: "Volvo V90"
-  },
-  {
-    lng: 8.560014,
-    lat: 47.37655,
-    name: "Volvo V40"
-  }
-];
+
 let selectedCar;
-let route;
+let street;
 let destination;
+let route;
 // Bind icons to map at coordinates of cars.
 const icons = cars.map((c, i) => {
   var popcontainer = L.DomUtil.create("div");
@@ -339,7 +341,14 @@ const icons = cars.map((c, i) => {
     }
     mymap.closePopup();
     selectedCar = c;
-    icons[i].setIcon(greenCarIcon);
+    updatePhoto(selectedCar.name)
+    updateCar(selectedCar.name)
+    
+    document.getElementById('amagada').style.visibility="visible";
+   
+    var latlng = L.latLng(c.lat,c.lng);
+    // getAdress(c);
+    icons[i].setIcon(greenCarIcon); 
   };
   return L.marker([c.lat, c.lng], { icon: carIcon })
     .addTo(mymap)
@@ -352,7 +361,57 @@ function createButton(label, container) {
   btn.innerHTML = label;
   return btn;
 }
-  </script>
+
+function updateCar(name){
+  document.getElementById("nomcotxe").innerHTML = name;
+  // document.getElementById("place_car").innerHTML 
+}
+
+function updatePhoto(name){
+
+    name = "./assets/cars/"+ name +".jpg";
+    name = name.replace(" ","%20");
+    console.log(name);
+    image = document.getElementById("pic1");
+    image.src = name; 
+    image.style.visibility="visible";
+}
+  
+  
+function rotateIcon(icon, angle) {
+  icon.setRotationAngle(angle);
+}
+
+function moveCar(i) {
+  let index = cars[i].startIndex;
+  let increasing = index < fakeRoute.length;
+  setInterval(() => {
+    if (increasing) {
+      index += 1;
+    } else {
+      index -= 1;
+    }
+    let [oldlat, oldlng] = [cars[i].lat, cars[i].lng];
+    [cars[i].lat, cars[i].lng] = [fakeRoute[index].lat, fakeRoute[index].lng];
+    icons[i].setLatLng(new L.LatLng(cars[i].lat, cars[i].lng));
+    let angle =
+      (Math.atan2(cars[i].lng - oldlng, cars[i].lat - oldlat) * 180) / Math.PI;
+    rotateIcon(icons[i], angle);
+    if (index === fakeRoute.length - 1) {
+      increasing = false;
+    } else if (index === 0) {
+      increasing = true;
+    }
+  }, 20);
+}
+
+moveCar(0);
+
+
+</script>
+
+
+
 </body>
 
 </html> 
