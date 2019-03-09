@@ -1,3 +1,17 @@
-Flask==1.0.2
-Flask-Cors==3.0.6
 
+Flask-Cors==3.0.6
+Click==7.0
+dlib==19.16.0
+face-recognition==1.2.3
+face-recognition-models==0.3.0
+Flask==1.0.2
+itsdangerous==1.1.0
+Jinja2==2.10
+MarkupSafe==1.1.1
+numpy==1.16.2
+opencv-python==4.0.0.21
+Pillow==5.4.1
+pkg-resources==0.0.0
+pytesseract==0.2.6
+Werkzeug==0.14.1
+pymongo
