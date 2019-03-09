@@ -60,7 +60,6 @@ def upload_file():
 				print ("User created.")
 				user = db['users'].find_one({"_id": name})
 				login_user(User(name))
-				flash("Logged in successfully", category='success')
 				return redirect("/")
 			except DuplicateKeyError:
 				print ("User already present in DB.")
