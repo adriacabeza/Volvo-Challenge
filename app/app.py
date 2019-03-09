@@ -47,7 +47,7 @@ def write():
 @app.route('/api/users')
 def getUsers():
 	users = db['users'].find()
-	return json.dumps(users)
+	return jsonify(list(users))
 
 @app.route('/signup', methods = ['GET', 'POST'])
 def upload_file():
