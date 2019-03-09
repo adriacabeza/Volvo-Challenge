@@ -1,0 +1,53 @@
+body{
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    min-height: 100%;
+    text-align: center;
+}
+
+.card {
+    overflow: visible;
+}
+
+.card-image {
+    background-color: gray;
+}
+.profile-pic {
+    margin-top: -6em;
+    z-index: 1;
+    position: relative;
+}
+
+.profile-pic > img {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 50%;
+}
+
+.controls {
+    cursor: pointer;
+}
+
+.row-menu{
+    position:relative;
+}
+
+.menu {
+    display:none;
+    right: 1em;
+    top: 1.8em;
+    position: absolute;
+    background-color: #fff;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.menu-list > li {
+    margin-bottom: 1em;
+    cursor: pointer;
+}
+
+.menu-list > li:last-child{
+    margin-bottom: -1em;
+}

@@ -1,0 +1,37 @@
+body{
+    background: url("../images/splash_background.jpg") no-repeat center center fixed;
+    filter: brightness(80%);
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    min-height: 100%;
+}
+
+html {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.div1 {
+    margin-top: 100%;
+    color: white;
+    align-items: center;
+    align: center;
+    align-content: center;
+    text-align: center;
+}
+
+.p1 {
+    font-family:Helvetica Neue,Helvetica,Arial,sans-serif;
+    letter-spacing:-10px;
+    font-size:100px;
+}
+
+.img1 {
+    width: 50%;
+    height: auto;
+    -webkit-filter:invert(100%);
+    filter:progid:DXImageTransform.Microsoft.BasicImage(invert='1');
+}
