@@ -108,39 +108,71 @@ const fakeRoute = [
   [8.577051, 47.344628]
 ];
 
-console.log(fakeRoute);
-
-const cars = [];
-for (let i = 0; i < 10; i++) {
-  let index = Math.floor(Math.random() * fakeRoute.length);
-  cars.push({
-    lng: fakeRoute[index][0],
-    lat: fakeRoute[index][1],
-    name: `Best Volvo ever #${i + 1}`
-  });
-}
+const cars = [
+  {
+    lng: 8.572739,
+    lat: 47.357397,
+    name: "Volvo V40"
+  },
+  {
+    lng: 8.544311,
+    lat: 47.387608,
+    name: "Volvo XC40"
+  },
+  {
+    lng: 8.548498,
+    lat: 47.385919,
+    name: "Volvo XC90"
+  },
+  {
+    lng: 8.502431,
+    lat: 47.371657,
+    name: "Volvo S90"
+  },
+  {
+    lng: 8.547295,
+    lat: 47.375369,
+    name: "Volvo V90"
+  },
+  {
+    lng: 8.498596,
+    lat: 47.377597,
+    name: "Volvo XC60"
+  },
+  {
+    lng: 8.498596,
+    lat: 47.377597,
+    name: "Volvo S60"
+  },
+  {
+    lng: 8.502426,
+    lat: 47.36125,
+    name: "Volvo V60"
+  },
+  {
+    lng: 8.519464,
+    lat: 47.395156,
+    name: "Volvo V90"
+  },
+  {
+    lng: 8.560014,
+    lat: 47.37655,
+    name: "Volvo V40"
+  }
+];
 
 let selectedCar;
 let route;
 let destination;
 
-// Fake cars coordinates.
-// const cars = [
-//   {
-//     lat: 47.4245,
-//     lng: 9.3767,
-//     name: "Best Volvo ever"
-//   }
-// {
-//   lat: 47.4445,
-//   lng: 9.3967
-// }
-// ];
-
 // Bind icons to map at coordinates of cars.
 const icons = cars.map((c, i) => {
   var popcontainer = L.DomUtil.create("div");
-  let name = popcontainer.appendChild(document.createElement("h5"));
+  popcontainer.style.cssText =
+    "display:flex;align-items:center;flex-direction:column;";
+  let name = popcontainer.appendChild(document.createElement("p"));
+  name.style.margin = "0px";
+  name.style.fontSize = "16px";
   name.innerHTML = c.name;
   let selectButton = createButton("Select this car", popcontainer);
   selectButton.onclick = () => {
@@ -164,18 +196,6 @@ const icons = cars.map((c, i) => {
     .bindPopup(popcontainer);
 });
 
-console.log(cars);
-
-// const popups = cars.map(c => {
-//   var popcontainer = L.DomUtil.create("div");
-//   let name = popcontainer.appendChild(document.createElement("h5"));
-//   name.innerHTML = c.name;
-//   L.popup()
-//     .setContent(popcontainer)
-//     .setLatLng(c);
-//   // .openOn(mymap);
-// });
-
 // Button when map is clicked to get destination.
 function createButton(label, container) {
   var btn = L.DomUtil.create("button", "", container);
@@ -190,7 +210,7 @@ mymap.on("click", function(e) {
     return null;
   }
   var container = L.DomUtil.create("div");
-  let destBtn = createButton("Go to this location", container);
+  let destBtn = createButton("Go here", container);
 
   geocoder.reverse(
     e.latlng,
