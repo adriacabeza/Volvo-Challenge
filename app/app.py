@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, request
 from pymongo import MongoClient
 import os
 from os.path import join, dirname, realpath
+from src.faceLogin.faceLogin.py import registerUser 
 
 mongo_uri = os.environ.get("MONGODB_URI", "mongodb://heroku_xv3vfwld:l3f3d2fv550d1akktp8m9uqj8e@ds119380.mlab.com:19380/heroku_xv3vfwld")
 
@@ -29,7 +30,10 @@ def upload_file():
 	if request.method == 'POST':
 		selfie = request.files['selfie']
 		licen = request.files['license']
-		
+		if registerUser(selfie, licen):
+			print("SAME PERSON BABY")
+		else:
+			print("WRONG PERSON")
 		return render_template('index.html')
 
 if __name__ == '__main__':

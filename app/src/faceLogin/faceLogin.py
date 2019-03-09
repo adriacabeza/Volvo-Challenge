@@ -14,9 +14,9 @@ def load_and_encode(namefile):
 
 def registerUser(ID1='obama', ID2='trump'):
   folderFaces = os.getcwd()+'/faceLogin/'
-  biden_encodingID1 = load_and_encode(folderFaces + 'Temp/%s_temp.jpg' % ID1)
-  biden_encodingID2 = load_and_encode(folderFaces + 'Temp/%s_temp.jpg' % ID2)
-
+  biden_encodingID1 = face_encodings(ID1)
+  biden_encodingID2 = face_encodings(ID2)
+  
   if comparePeople(biden_encodingID1,biden_encodingID2):
     return True
   else:
