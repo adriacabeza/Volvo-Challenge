@@ -1,3 +1,9 @@
+boost==0.1
+cmake==0.7.1
+boost-py
+dlib==19.16.0
+face-recognition==1.2.3
+face-recognition-models==0.3.0
 Flask-Cors==3.0.6
 pymongo==3.7.2
 Click==7.0
