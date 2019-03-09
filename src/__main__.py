@@ -6,7 +6,7 @@ import os
 flask_app = Flask(__name__, template_folder='templates/')
 flask_app.config['JSON_AS_ASCII'] = False
 
-# flask_app.add_url_rule('favicon.ico', redirect_to=url_for('static', filename='favicon.ico'))
+
 login_manager = LoginManager()
 login_manager.init_app(flask_app)
 
@@ -34,6 +34,10 @@ def login():
 		return home()
 	return render_template('login.html')
 
+# @flask_app.route('/map')
+# def map():
+
+
 if __name__ == '__main__':
 	flask_app.secret_key = os.urandom(12)
 	flask_app.run(host='0.0.0.0', port=8081, debug =True)
@@ -43,3 +47,5 @@ if __name__ == '__main__':
 
 #if __name__ == '__init__':
 #ficar initial stuff
+#to remember to put in every website
+# <link rel="shortcut icon" type="image/ico" href="/favicon.ico"/>
