@@ -13,11 +13,7 @@ app.config['JSON_AS_ASCII'] = False
 
 @app.route('/')
 def index():
-#  return render_template('index.html',params=None)
-	html = "<h1>Home Page</h1>"
-	for doc in collection.find():
-		html += doc['name'] + '<br>'
-	return html
+	return render_template('index.html',params=None)
 
 @app.route('/signup')
 def signup():
