@@ -8,6 +8,7 @@ TODO
 
 ## TODO
 - Fer subasta (ebay)
+- CHECK IF THE FACE RECOGNITION WORKS WITH DRIVER LICENSE
 - Deploy somewhere
 
 
