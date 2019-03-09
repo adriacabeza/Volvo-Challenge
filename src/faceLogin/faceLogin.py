@@ -12,9 +12,12 @@ def load_and_encode(namefile):
     raise NameError('No face was found')
 
 def detectUser(ID='obama'):
-  biden_encoding = load_and_encode('Temp/%s_temp.jpg' % ID)
-  for image in os.listdir('Faces'):
-    biden_encodingID= load_and_encode('Faces/'+image)
+  folderFaceLogin = os.getcwd()+'/faceLogin/'
+  biden_encoding = load_and_encode(folderFaceLogin + 'Temp/%s_temp.jpg' % ID)
+  facesDir = folderFaceLogin+'Faces'
+
+  for image in os.listdir(facesDir):
+    biden_encodingID= load_and_encode(facesDir+'/'+image)
     if comparePeople(biden_encoding, biden_encodingID):
       print('Face found on '+ image)
       return True
@@ -24,5 +27,4 @@ def detectUser(ID='obama'):
 def comparePeople(biden_encoding, biden_encodingID):
   results = face_recognition.compare_faces([biden_encoding], biden_encodingID)
   return results[0]
-
 
