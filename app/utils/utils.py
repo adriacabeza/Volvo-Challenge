@@ -30,10 +30,10 @@ def check_if_driver_license(ImageName):
   text = text.replace(" ","")
  # print(text)
   if len(text) > 0 and any(x in text for x in keywords):
-    print('IT IS A FUCKING DRIVING LICENSE BRO I GUESS')
+    print('IT IS A DRIVING LICENSE BRO')
     return True
   else :
-    print('THATS BULLSHIT YOU TRYING TO F** W/ ME?')
+    print('WHAT IS THIS')
     return False
 
 
