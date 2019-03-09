@@ -48,4 +48,3 @@ def tests():
   check_if_driver_license('prueba.jpg')
 
 
-tests()
