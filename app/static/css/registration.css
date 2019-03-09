@@ -1,0 +1,33 @@
+body {
+    background-color: black;
+}
+
+#cam-icon {
+    font-size: 40px;
+}
+
+form {
+    text-align: center;
+}
+
+#image-input-label, #license-input-label {
+    display: inline-block;
+}
+
+#image-input, #license-input {
+    visibility:hidden;
+    width:0;
+    height:0;
+}
+
+#volvo-logo {
+    margin-left: -18px;
+    height: 50px;
+    width: auto;
+    padding: 10px 0 0 20px;
+}
+
+#selfie, #license {
+    margin: 0 auto;
+}
+
