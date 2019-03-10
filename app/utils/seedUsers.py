@@ -4,7 +4,7 @@ from pymongo.errors import DuplicateKeyError
 import os
 
 
-def main():
+def main(isOwner):
     # Connect to the DB
     mongo_uri = os.environ.get("MONGODB_URI", "mongodb://heroku_xv3vfwld:l3f3d2fv550d1akktp8m9uqj8e@ds119380.mlab.com:19380/heroku_xv3vfwld")
 
@@ -19,12 +19,14 @@ def main():
 
     # Insert the user in the DB
     try:
-        collection.insert({"_id": user, "password": pass_hash})
+        collection.insert({"_id": user, "password": pass_hash, "owner": isOwner})
         print ("User created.")
     except DuplicateKeyError:
         print ("User already present in DB.")
 
 
 if __name__ == '__main__':
+    ans = input('Introduce owners? y|n').lower()
+    isOwner = ans == 'y' or ans == 'yes'
     while True:
-        main()
+        main(isOwner)
