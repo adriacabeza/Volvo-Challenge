@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8">
   <title>Map</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
@@ -17,7 +18,7 @@
     crossorigin=""></script>
   <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
   <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-  <script src="leaflet.rotatedMarker.js"></script>
+  <script src="../static/js/leaflet.rotatedMarker.js"></script>
 
 </head>
 
@@ -26,12 +27,10 @@
 
   <div id="mapid"></div>
 <div class="divSearch">
-    <p class="p1" id="textfield">Where will we go today?</p>
+    <p class="p1" id="textfield">Where will we go <b style="color:brown; font-size: 60px;"> today?</b> </p>
      <div class="input-field" style= "width: 90%;margin: 5%;background-color: transparent;">
           <input id="search" type="search" required style="font-size: 50px; height: 50px;">
           <label for="search"><i class="material-icons" style="background-color: transparent; height: 50px; ">search</i></label>
-          <!-- I've put "red-text" class to emphasize -->
-          <i class="material-icons red-text" style="font-size: 50px;">close</i>
      </div>
     <div class="collection">
         <a id="res1" onclick="routeSelected(this.text)" class="collection-item" style="background-color: transparent;height: 70px; margin: 20px; visibility: hidden; font-size: 30px;"><i class="material-icons" style="margin: 5px">location_searching</i>Museumstrasse 12, Zurich</a>

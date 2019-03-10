@@ -4,7 +4,6 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
-    overflow: hidden;
 }
 
 #mapid {
@@ -29,15 +28,17 @@ body {
     flex-grow: 10;
     margin: 0px;
     left: 0px;
-    bottom: -50px;
-    background-color: lightgray;
+    bottom: 0px;
+    background-color: #f4f4f4;
 }
 
+p{
+  font-family:Lato,sans-serif;
+}
 .p1 {
-    font-family:Helvetica Neue,Helvetica,Arial,sans-serif;
     letter-spacing:-1px;
     font-size:40px;
-    color: gray;
+    color: black;
     margin-top: 30px;
     margin-left: 40px;
 }
