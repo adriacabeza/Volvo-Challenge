@@ -32,11 +32,7 @@ html {
     align-content: center;
 }
 
-#email {
-    color: white;
-}
-
-#password {
+#password, #name {
     color: white;
 }
 
