@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -24,21 +25,24 @@
 
 <body>
 {% include "header.html" %}
-
-  <div id="mapid"></div>
-<div class="divSearch">
-    <p class="p1" id="textfield">Where will we go <b style="color:brown; font-size: 60px;"> today?</b> </p>
-     <div class="input-field" style= "width: 90%;margin: 5%;background-color: transparent;">
-          <input id="search" type="search" required style="font-size: 50px; height: 50px;">
-          <label for="search"><i class="material-icons" style="background-color: transparent; height: 50px; ">search</i></label>
-     </div>
-    <div class="collection">
-        <a id="res1" onclick="routeSelected(this.text)" class="collection-item" style="background-color: transparent;height: 70px; margin: 20px; visibility: hidden; font-size: 30px;"><i class="material-icons" style="margin: 5px">location_searching</i>Museumstrasse 12, Zurich</a>
-        <a id="res2" onclick="routeSelected(this.text)" class="collection-item" style="background-color: transparent;height: 70px; margin: 20px; visibility: hidden; font-size: 30px;"><i class="material-icons" style="margin: 5px" onclick="routeSelected(this.text)">location_searching</i>Museumstrasse 12, Zurich</a>
-        <a id="res3" onclick="routeSelected(this.text)" class="collection-item" style="background-color: transparent;height: 70px; margin: 20px; visibility: hidden; font-size: 30px;"><i class="material-icons" style="margin: 5px" onclick="routeSelected(this.text)">location_searching</i>Museumstrasse 12, Zurich</a>
-        <a id="res4" onclick="routeSelected(this.text)" class="collection-item" style="background-color: transparent;height: 70px; margin: 20px; visibility: hidden; font-size: 30px;"><i class="material-icons" style="margin: 5px" onclick="routeSelected(this.text)">location_searching</i>Museumstrasse 12, Zurich</a>
-  </div>
-</div>
+    <div id="mapid"></div>
+    <div class="divSearch">
+        <p class="p1" id="textfield">Where will we go <b style="color:brown; font-size: 30px;"> today?</b> </p>
+         <div class="input-field" style= "width: 90%;margin: 5%;background-color: transparent;">
+              <input id="search" type="search" required style="font-size: 40px; height: 50px;">
+              <label for="search"><i class="material-icons" style="background-color: transparent; height: 50px; ">search</i></label>
+         </div>
+         <ul class="collection" id="locationslist">
+            <li class="collection-item avatar">
+              <img src="images/yuna.jpg" alt="" class="circle">
+              <span class="title">Title</span>
+              <p>First Line <br>
+                 Second Line
+              </p>
+              <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+        </ul>
+    </div>
 </body>
 
 <script src="../static/js/map.js"></script>
