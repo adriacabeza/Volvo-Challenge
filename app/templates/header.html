@@ -1,14 +1,31 @@
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+h1,h2,h3,a,p,b{
+    font-family: 'Lato',sans-serif;
+}
+
+</style>
 <nav>
     <div class="nav-wrapper white">
         <a href="#!" class="brand-logo center-align"><img id="volvo-logo" src="../static/images/volvo-logo-scaled.png"></a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
         <ul class="right hide-on-med-and-down">
-            <li><a class="black-text" href="/signup">Sign up</a></li>
+            <div>
+            <i class="fas fa-sign-in-alt"></i> <li><a class="black-text" href="/signup" style="border-width:5px; border-color:black;">Sign up</a></li>
+        </div>
+        <div>
+            <i class="fas fa-sign-out-salt"></i> <li><a class="black-text" href="/logout" style="border-width:5px; border-color:black;">Log out</a></li>
+        </div>
         </ul>
     </div>
-</nav>
+</nav> 
+
+
+
+
 
 <ul class="sidenav" id="mobile-demo">
-    <li><a class="black-text" href="/signup" style=" font-family: 'Lato', sans-serif;" >Sign up</a></li>
+    <li><a class="black-text" href="/signup" >Sign up</a></li>
 </ul>
