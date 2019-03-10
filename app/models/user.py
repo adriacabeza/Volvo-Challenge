@@ -2,9 +2,11 @@ from werkzeug.security import check_password_hash
 
 class User():
 
-    def __init__(self, username):
+    def __init__(self, username, email, owner):
         self.username = username
-        self.email = None
+        self.email = email
+        self.owner = owner
+
 
     def is_authenticated(self):
         return True
