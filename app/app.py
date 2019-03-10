@@ -32,7 +32,7 @@ def index():
 @app.route('/login')
 def login():
 	if current_user.is_authenticated:
-		if current_user.owner:	
+		if current_user.owner:
 			return redirect('/Dashboard')
 		else:
 			return redirect('/home')
@@ -43,6 +43,7 @@ def login():
 		if user is None or not user.check_password(password):
 			return redirect('/login')
 		login_user(user)
+		nextPage = ''
 		if current_user.owner:	
 			nextPage = '/Dashboard'
 		else:
