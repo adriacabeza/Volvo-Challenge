@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash
 from models.user import User
 from flask import Flask, jsonify, Response, redirect, url_for, request, session, abort, render_template
 from flask_login import LoginManager, UserMixin, \
-login_required, login_user, logout_user 
+login_required, login_user, logout_user, current_user 
 import json
 
 
