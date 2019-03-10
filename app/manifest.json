@@ -1,0 +1,7 @@
+{
+    "short_name": "Volvo App",
+    "name": "Volvo START Hack App",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait"
+  }
