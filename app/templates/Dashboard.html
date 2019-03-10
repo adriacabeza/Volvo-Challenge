@@ -150,17 +150,17 @@
             </a>
           </li>
           <li>
-              <a href="">
+           <a href="javascript:taulaAux()">
                 <i class="fas fa-car-crash"></i>
-              <p>Notifications</p>
+              <p>Crashes</p>
             </a>
-          </li>
+          <!-- </li>
           <li>
             <a href="javascript:parseJSONtoListCARS()">
               <i class="fas fa-car"></i>
               <p>Car List</p>
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -204,13 +204,27 @@
           }
         }
       </script>
-
+     
       <div class="content">
           <div class="container-fluid">
               <div class="card card-map">
                   <div class="map" style="overflow:hidden;">
                       <div id="mapid"></div>
-                      <p id="showData" style ="visibility: hidden;"></p>
+                      <table style="width:100%" id="crashes" style="visibility: hidden">
+                          <tr>
+                              <th>Date</th>
+                              <th>Car</th>
+                              <th>User</th>
+                            </tr>
+                          {% for crash in crashes%}
+                            <tr>
+                              <td> {{crash['date']}} </td>
+                              <td> {{crash['car']}} </td>
+                              <td> {{crash['user']}} </td>
+                            </tr>
+                            {% endfor %}
+                          </table>
+
                       <div class="at-floating-card" id="amagada"  style="visibility: hidden; justify-content: center;">
                           <img id="pic1" style="visibility:hidden; height:100%; width: 100%;"> </img>
 
@@ -403,46 +417,16 @@ function moveCar(i) {
 
 moveCar(0);
 
+function taulaAux(){
+  document.getElementById('mapid').style.visibility='hidden';
+  document.getElementById('crashes').style.visibility = 'visible';
 
-function parseJSONtoListCARS(){
-  //EN TEORIA EL JSON ESTARIA EN DATA TODO COGER EL JSON
-  var col = []
-  for (var i = 0; i < data.length; i++) {
-    for (var key in data[i]) {
-        col.push(key);
-    }
-  }
-
-    var table = document.createElement("table");
-    var tr = table.insertRow(-1);
-
-    for(var i = 0; i< col.length; ++i){
-      var th = document.createElement("th");      // TABLE HEADER.
-      th.innerHTML = col[i];
-      tr.appendChild(th);
-    }
-     // ADD JSON DATA TO THE TABLE AS ROWS.
-    for (var i = 0; i < data.length; i++) {
-
-      tr = table.insertRow(-1);
-
-      for (var j = 0; j < col.length; j++) {
-          var tabCell = tr.insertCell(-1);
-          tabCell.innerHTML = data[i][col[j]];
-      }
-    }
-    var divContainer = document.getElementById("showData");
-    divContainer.innerHTML = "";
-    divContainer.appendChild(table);
-    document.getElementById('showData').style.visibility = 'visible';
-    document.getElementById('mapid').style.visibility = 'hidden';
- 
-  }
-
-  
-
-
-
+}
+onRowClick("table_crashes", function (row){
+    var value = row.getElementsByTagName("td")[0].innerHTML;
+    document.getElementById('click-response').innerHTML = value;
+    console.log("value>>", value);
+});
 
 </script>
 
