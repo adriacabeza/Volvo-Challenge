@@ -27,6 +27,15 @@ const greenCarIcon = L.icon({
   iconUrl: "../static/images/carGreen.png",
   iconSize: [38, 38] // size of the icon
 });
+const redCarIcon = L.icon({
+  iconUrl: "../static/images/carRed.png",
+  iconSize: [38, 38]
+});
+
+const transIcon = L.icon({
+  iconUrl: "",
+  iconSize: [0,0]
+});
 
 const fakeRoute =
 [{
@@ -10684,6 +10693,7 @@ let destination;
 let locations;
 let price;
 let distance;
+let locationcar;
 
 // Bind icons to map at coordinates of cars.
 const icons = cars.map((c, i) => {
@@ -10763,14 +10773,14 @@ mymap.on("click", function(e) {
 });
 
 // Compute the route given the destination point.
-function getRoute(latlng) {
+function getRoute(text,latlng) {
   route = L.Routing.control({
     waypoints: [
       L.latLng(selectedCar.lat, selectedCar.lng),
       L.latLng(latlng.lat, latlng.lng)
     ],
     routeWhileDragging: true,
-    show: true,
+    show: false,
     createMarker: function(i, start) {
       if (i === 0) {
         return null;
@@ -10780,18 +10790,7 @@ function getRoute(latlng) {
     }
   }).addTo(mymap);
 
-  route.on('routesfound', function(e) {
-   var routes = e.routes;
-   var summary = routes[0].summary;
-   console.log(summary);
-   price = 10 + summary.totalDistance / 1000 * 0.2;
-   distance = summary.totalDistance / 1000;
-   showPrice();
-});
-
-
-
-
+  showPrice(text);
 }
 
 function rotateIcon(icon, angle) {
@@ -10864,6 +10863,7 @@ function searchRoute() {
         locations[i] = result;
         row.appendChild(document.createTextNode(result));
         row.i = i;
+        row.style.background = "#f4f4f4";
         row.onclick = (e ) =>{
           routeSelected(e.target.i);
         }
@@ -10874,6 +10874,7 @@ function searchRoute() {
 }
 
 function routeSelected(i) {
+  document.getElementById("search").disabled = true;
   console.log(i);
    var text = locations[i];
    console.log(text);
@@ -10891,7 +10892,7 @@ function routeSelected(i) {
       "lng": long
     };
     console.log(latlong);
-    getRoute(latlong);
+    getRoute(text,latlong);
 }
 
 function getLocation() {
@@ -10939,8 +10940,11 @@ function NearestCar(latitude) {
 
   selectedCar = cars[closest];
   console.log(selectedCar);
+  locationcar = closest;
   icons[closest].setIcon(greenCarIcon);
-
+  for (let i = 0; i < icons ; i++) {
+    icons[i].setIcon(transIcon);
+  }
 }
 
 
@@ -10949,16 +10953,56 @@ deinitList();
 getLocation();
 
 function showPrice(text) {
+  route.on('routesfound', function (e) {
+    var routes = e.routes;
+    var summary = routes[0].summary;
+    console.log(summary);
+    price = 10 + summary.totalDistance / 1000 * 0.2;
+    distance = summary.totalDistance / 1000;
+    showPrice2(text);
+  });
+}
+
+function showPrice2(text) {
   var destination = text.replace(/ .*/,'');
   document.getElementById("textfield").innerText = "We are going to " + destination + "!!";
   var list = document.getElementById('locationslist');
   deinitList();
   var row = document.createElement("li");
   row.className = "collection-item avatar";
-  row.appendChild(document.createTextNode(price));
+  row.style.background = "#f4f4f4";
+  var i = document.createElement("i");
+  i.className = "material-icons circle";
+  i.appendChild(document.createTextNode("euro_symbol"));
+  row.appendChild(i);
+  row.appendChild(document.createTextNode((Math.round(price*100)/100).toString() + "€"));
   list.append(row);
   var row2 = document.createElement("li");
   row2.className = "collection-item avatar";
-  row2.appendChild(document.createTextNode(distance + " km"));
+  row2.style.background = "#f4f4f4";
+  var i2 = document.createElement("i");
+  i2.className = "material-icons circle";
+  i2.appendChild(document.createTextNode("access_time\n"));
+  row2.appendChild(i2);
+  row2.appendChild(document.createTextNode((Math.round(distance*100)/100).toString() + " km"));
   list.append(row2);
+
+  var row3 = document.createElement("li");
+  row3.className = "collection-item avatar";
+  row3.style.background = "#f4f4f4";
+  row3.style.textAlign = "center";
+  var button = document.createElement("button");
+  button.className = "btn waves-effect waves-light";
+  button.appendChild(document.createTextNode("Pay"));
+  var i3 = document.createElement("i");
+  i3.className = "material-icons right";
+  i3.appendChild(document.createTextNode("account_balance_wallet\n"));
+  button.appendChild(i3);
+  button.onclick = ( ) => {
+    document.getElementById("mapid").style.height = "100%";
+    document.getElementById("mapid").style.zIndex = "1";
+    icons[locationcar].setIcon(redCarIcon);
+  };
+  row3.appendChild(button);
+  list.append(row3);
 }
