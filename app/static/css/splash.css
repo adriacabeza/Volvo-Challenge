@@ -1,5 +1,5 @@
 body{
-    background: url("../images/splash_background.jpg") no-repeat center center fixed;
+    background: url("../images/5.jpeg") no-repeat center center fixed;
     filter: brightness(80%);
     background-size: cover;
     height: 100%;
@@ -24,9 +24,11 @@ html {
 }
 
 .p1 {
-    font-family:Helvetica Neue,Helvetica,Arial,sans-serif;
+
+    font-family: 'Roboto', sans-serif;
     letter-spacing:-10px;
-    font-size:100px;
+    color: #333333;
+    font-size:150px;
 }
 
 .img1 {

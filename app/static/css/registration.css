@@ -1,5 +1,10 @@
 body {
-    background-color: black;
+    background-color: #f4f4f4;
+}
+
+h1,h2,h3,h4,p,a{
+    color: #303030;
+    font-family: 'Lato', sans-serif !important;
 }
 
 #cam-icon {
