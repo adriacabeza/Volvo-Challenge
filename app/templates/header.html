@@ -12,11 +12,9 @@ h1,h2,h3,a,p,b{
         <a href="#!" class="brand-logo center-align"><img id="volvo-logo" src="../static/images/volvo-logo-scaled.png"></a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons black-text">menu</i></a>
         <ul class="right hide-on-med-and-down">
-            <div>
-            <i class="fas fa-sign-in-alt"></i> <li><a class="black-text" href="/signup" style="border-width:5px; border-color:black;">Sign up</a></li>
-        </div>
-        <div>
-            <i class="fas fa-sign-out-salt"></i> <li><a class="black-text" href="/logout" style="border-width:5px; border-color:black;">Log out</a></li>
+         
+       <li><a class="black-text" href="/signup" style="border-width:5px; border-color:black;">Sign up</a></li>
+       <li><a class="black-text" href="/logout" style="border-width:5px; border-color:black;">Log out</a></li>
         </div>
         </ul>
     </div>
@@ -27,5 +25,10 @@ h1,h2,h3,a,p,b{
 
 
 <ul class="sidenav" id="mobile-demo">
-    <li><a class="black-text" href="/signup" >Sign up</a></li>
+    <div>
+ <li><a class="black-text" href="/signup">Sign up     <i class="fas fa-sign-in-alt"></i> </a></li>
+    </div>
+    <div>
+     <li><a class="black-text" href="/logout">Log out <i class="fas fa-sign-out-alt"></i> </a></li>
+    </div>
 </ul>
