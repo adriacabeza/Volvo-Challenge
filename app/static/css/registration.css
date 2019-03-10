@@ -5,31 +5,35 @@ body {
 
 /* label color */
 .input-field label {
-    color: #f4f4f4 !important;
+    color: #f45844 !important;
     font-family: Lato, "Helvetica Neue";
  }
  
  .row .input-field input  {
-   border-bottom: 1px solid #f45844 !important;
-   box-shadow: 0 1px 0 0 #f45844 !important
+   border-bottom: 1px solid #333333!important;
+   /* box-shadow: 0 1px 0 0 #f4f4f4 !important */
  }
  
  .input-field input:focus + label {
-   color: #f4f4f4 !important;
+   color: #e34733 !important;
     font-family: Lato, "Helvetica Neue";
  }
  
  .input-field input:focus + label {
-   color: #f4f4f4 !important;
+   color: #e34733 !important;
      font-family: Lato, "Helvetica Neue";
  }
  /* label underline focus color */
  .row .input-field input:focus {
-   border-bottom: 1px solid #f4f4f4 !important;
-   box-shadow: 0 1px 0 0 #f4f4f4 !important
+   border-bottom: 1px solid #333333 !important;
+   /* box-shadow: 0 1px 0 0 #f4f4f4 !important */
  }
  
-
+.input-field{
+    margin: 0 15px 0 15px;
+    
+    
+}
 
 h1,h2,h3,h4,p,a{
     color: #30303F;
