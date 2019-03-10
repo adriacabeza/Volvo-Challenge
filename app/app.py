@@ -29,7 +29,7 @@ lm.login_view = 'login'
 def index():
 	return render_template('splash.html',params=None)
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
 	if current_user.is_authenticated:
 		if current_user.owner:	
@@ -39,8 +39,8 @@ def login():
 	if request.method == 'POST':
 		username = request.form['name']
 		password = request.form['password']
-		user = User.find_one({"_id": username})
-		if user is None or not user.check_password(password):
+		user = load_user(username)
+		if user is None or not user.validate_login(db['users'].find_one({'_id': username}).password, password):
 			return redirect('/login')
 		login_user(user)
 		if current_user.owner:	
@@ -56,7 +56,7 @@ def load_user(username):
 	u = db['users'].find_one({"_id": username})
 	if not u:
 		return None
-	return User(u['_id'])
+	return User(u['_id'], u['email'], u['owner'])
 
 
 @app.route('/home')
