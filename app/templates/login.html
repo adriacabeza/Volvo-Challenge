@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-<form>
+<form action="/login" method="post">
     <div style="margin: 20%"></div>
     <div class="div1">
         <div class="row">
@@ -21,18 +21,18 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="name" type="text" class="validate">
+            <input id="name" type="text" class="validate" name="name">
             <label for="name">Name</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="password" type="password" class="validate">
+            <input id="password" type="password" class="validate" name="password">
             <label for="password">Password</label>
           </div>
         </div>
         <div class="row" align="center">
-            <button id="loginbutton" class="btn waves-effect waves-light" type="submit" name="action">Login
+            <button id="loginbutton" class="btn waves-effect waves-light" type="submit" value="Submit">Login
                 <i class="material-icons right">send</i>
             </button>
         </div>

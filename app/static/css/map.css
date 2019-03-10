@@ -9,6 +9,7 @@ body {
 #mapid {
       z-index: -1;
     position: absolute;
+    display: ;
     height: 60%;
     min-height: 60%;
     width: 100%;
