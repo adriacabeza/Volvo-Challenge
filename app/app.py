@@ -29,25 +29,28 @@ lm.login_view = 'login'
 def index():
 	return render_template('splash.html',params=None)
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 	if current_user.is_authenticated:
-		if current_user.owner:	
-			return redirect('/Dashboard')
+		if current_user.owner:
+			return redirect('/dashboard')
 		else:
 			return redirect('/home')
 	if request.method == 'POST':
 		username = request.form['name']
 		password = request.form['password']
-		user = load_user(username)
-		if user is None or not user.validate_login(db['users'].find_one({'_id': username}).password, password):
+		user_json = db['users'].find_one({"_id": username})
+		if user_json is None or not User.validate_login(user_json['password'],password):
 			return redirect('/login')
+		user = User(user_json['_id'],user_json['email'],user_json['owner'])
 		login_user(user)
+		nextPage = ''
 		if current_user.owner:	
-			nextPage = '/Dashboard'
+			nextPage = '/dashboard'
 		else:
 			nextPage = '/home'
-		return redirect(next_page)
+		return redirect(nextPage)
 	return render_template('login.html',params=None)
 
 
@@ -68,7 +71,7 @@ def home():
 @login_required
 def dashboard():
 	if current_user.owner:
-		return render_template('/Dashboard.html')
+		return render_template('/Dashboard.html', crashes = jsonify(list(db['crashes'].find())))
 	else:
 		return redirect('/home')
 
@@ -92,14 +95,15 @@ def upload_file():
 		name = request.form['name']
 		email = request.form['email']
 		password = request.form['password']
+		owner = False
 		pass_hash = generate_password_hash(password, method='pbkdf2:sha256')
 		if faceLoginLogin.registerUser(selfie, licen):
 			print("Photos matched!")
 			try:
-				db['users'].insert({"_id": name, "password": pass_hash, "email": email})
+				db['users'].insert({"_id": name, "password": pass_hash, "email": email, "owner": False})
 				print ("User created.")
 				user = db['users'].find_one({"_id": name})
-				login_user(User(name))
+				login_user(User(email), User(owner))
 				return redirect("/home")
 			except DuplicateKeyError:
 				print ("User already present in DB.")

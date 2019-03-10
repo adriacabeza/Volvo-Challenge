@@ -10670,12 +10670,20 @@ const cars = [
     lng: 8.560014,
     lat: 47.37655,
     name: "Volvo V40"
+  },
+  {
+    lng: 9.375458,
+    lat: 47.431922,
+    name: "Volvo V40"
   }
 ];
 
 let selectedCar;
 let route;
 let destination;
+let locations;
+let price;
+let distance;
 
 // Bind icons to map at coordinates of cars.
 const icons = cars.map((c, i) => {
@@ -10762,7 +10770,7 @@ function getRoute(latlng) {
       L.latLng(latlng.lat, latlng.lng)
     ],
     routeWhileDragging: true,
-    show: false,
+    show: true,
     createMarker: function(i, start) {
       if (i === 0) {
         return null;
@@ -10771,6 +10779,19 @@ function getRoute(latlng) {
       }
     }
   }).addTo(mymap);
+
+  route.on('routesfound', function(e) {
+   var routes = e.routes;
+   var summary = routes[0].summary;
+   console.log(summary);
+   price = 10 + summary.totalDistance / 1000 * 0.2;
+   distance = summary.totalDistance / 1000;
+   showPrice();
+});
+
+
+
+
 }
 
 function rotateIcon(icon, angle) {
@@ -10801,8 +10822,9 @@ function moveCar(i) {
 }
 
 function deinitList(){
-  var list = document.getElementById("locationslist");
-  list.innerHTML = "";
+  locations = [];
+  var ul = document.getElementById("locationslist");
+  while(ul.firstChild) ul.removeChild(ul.firstChild);
 }
 
 function searchRoute() {
@@ -10816,35 +10838,45 @@ function searchRoute() {
     xhReq.send(null);
     console.log(xhReq.responseText);
     var serverResponse = JSON.parse(xhReq.responseText);
-    console.log(serverResponse);
     var suggestions = serverResponse.suggestions;
-    for (var i = 0; i < suggestions.length; ++i) {
-      var row = document.create
+    let i;
+    for (i = 0; i < suggestions.length; ++i) {
+      console.log(i);
+      var row = document.createElement("li");
+      row.className = "collection-item avatar";
         var address = suggestions[i].address;
-        var result = ""
+        console.log(address);
+        var result = "";
         switch (suggestions[i].matchLevel) {
           case "street":
-            result = address.street + " " + address.city + ", " + address.county + ", " + address.state + ", " + address.country;
+            result = address.street + "\n" + address.city + ", " + address.county + "\n" + address.state + ", " + address.country;
             break;
 
           case "district":
-            result = address.district + " " + address.city + ", " + address.county + ", " + address.state + ", " + address.country;
+            result = address.district + "\n" + address.city + "\n" + address.state + ", " + address.country;
             break;
 
           case "city":
-            result = address.city + " " + address.postalCode + ", " + address.county + ", " + address.state + ", " + address.country;
+            result = address.city + " " + address.postalCode + "\n"  + address.county + "\n" + address.state + ", " + address.country;
             break;
         }
-        var strOpt = "res" + (i+1).toString();
-        console.log(strOpt);
-        var res = document.getElementById(strOpt);
-        res.style.visibility = "visible";
-        res.textContent = result;
-      }
-  }
+        console.log(list);
+        locations[i] = result;
+        row.appendChild(document.createTextNode(result));
+        row.i = i;
+        row.onclick = (e ) =>{
+          routeSelected(e.target.i);
+        }
+        list.append(row);
+    }
+    console.log(list.firstChild);
+    if(list.firstChild.innerHTML == "") { list.removeChild(list.firstChild) }
 }
 
-function routeSelected(text) {
+function routeSelected(i) {
+  console.log(i);
+   var text = locations[i];
+   console.log(text);
     if(route) mymap.removeControl(route);
     var xhReq = new XMLHttpRequest();
    var queryStr = "https://geocoder.api.here.com/6.2/geocode.json?searchtext=" + text +"&app_id=f5EgZLuNKERqtWkJSHCM&app_code=Z2SgFC2U39EtGwhUl3FPqw&";
@@ -10862,4 +10894,71 @@ function routeSelected(text) {
     getRoute(latlong);
 }
 
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+}
+function showPosition(position) {
+    console.log(position);
+    var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap);
+    marker.bindPopup("<b>Current</b> Position");
+    mymap.setView([position.coords.latitude, position.coords.longitude], 8);
+    NearestCar([position.coords.latitude, position.coords.longitude]);
+}
+
+// Convert Degress to Radians
+function Deg2Rad(deg) {
+  return deg * Math.PI / 180;
+}
+
+function PythagorasEquirectangular(lat1, lon1, lat2, lon2) {
+  lat1 = Deg2Rad(lat1);
+  lat2 = Deg2Rad(lat2);
+  lon1 = Deg2Rad(lon1);
+  lon2 = Deg2Rad(lon2);
+  var R = 6371; // km
+  var x = (lon2 - lon1) * Math.cos((lat1 + lat2) / 2);
+  var y = (lat2 - lat1);
+  var d = Math.sqrt(x * x + y * y) * R;
+  return d;
+}
+
+function NearestCar(latitude) {
+  console.log(latitude);
+  var minDif = 99999;
+  var closest;
+
+  for (index = 0; index < cars.length; ++index) {
+    var dif = PythagorasEquirectangular(latitude[0], latitude[1], cars[index].lat, cars[index].lng);
+    if (dif < minDif) {
+      closest = index;
+      minDif = dif;
+    }
+  }
+
+  selectedCar = cars[closest];
+  console.log(selectedCar);
+  icons[closest].setIcon(greenCarIcon);
+
+}
+
+
 moveCar(0);
+deinitList();
+getLocation();
+
+function showPrice(text) {
+  var destination = text.replace(/ .*/,'');
+  document.getElementById("textfield").innerText = "We are going to " + destination + "!!";
+  var list = document.getElementById('locationslist');
+  deinitList();
+  var row = document.createElement("li");
+  row.className = "collection-item avatar";
+  row.appendChild(document.createTextNode(price));
+  list.append(row);
+  var row2 = document.createElement("li");
+  row2.className = "collection-item avatar";
+  row2.appendChild(document.createTextNode(distance + " km"));
+  list.append(row2);
+}

@@ -10594,51 +10594,62 @@ const cars = [
     lat: 47.357397,
     name: "Volvo V40",
     isMoving: true,
-    startIndex: 3369
+    startIndex: 3369,
+    owner: 'VolvoOwner',
+    user: 'John'
   },
   {
     lng: 8.544311,
     lat: 47.387608,
+    owner: 'VolvoOwner',
     name: "Volvo XC40"
   },
   {
     lng: 8.548498,
     lat: 47.385919,
+    owner: 'VolvoOwner',
     name: "Volvo XC90"
   },
   {
     lng: 8.502431,
     lat: 47.371657,
+    owner: 'VolvoOwner',
     name: "Volvo S90"
   },
   {
     lng: 8.547295,
     lat: 47.375369,
+    owner: 'VolvoOwner',
     name: "Volvo V90"
   },
   {
     lng: 8.498596,
     lat: 47.377597,
+    owner: 'VolvoOwner',
     name: "Volvo XC60"
   },
   {
     lng: 8.498596,
     lat: 47.377597,
+    owner: 'VolvoOwner',
     name: "Volvo S60"
   },
   {
     lng: 8.502426,
     lat: 47.36125,
+    owner: 'VolvoOwner',
     name: "Volvo V60"
   },
   {
     lng: 8.519464,
     lat: 47.395156,
+    owner: 'VolvoOwner',
     name: "Volvo V90"
   },
   {
     lng: 8.560014,
     lat: 47.37655,
+    owner: 'VolvoOwner',
     name: "Volvo V40"
   }
 ];
