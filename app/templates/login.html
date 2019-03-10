@@ -9,7 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="../static/js/login.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 <form>
@@ -36,10 +37,11 @@
             </button>
         </div>
     </div>
-    <div class="div2">
-        <a id="signuptext">You don't have an account?</a>
-        <a id="signupbutton" class="waves-effect waves-light btn-large"><i class="material-icons left">person_pin</i>SignUp</a>
-    </div>
 </form>
+<div class="div2">
+    <a id="signuptext">You don't have an account?</a>
+    <a id="signupbutton" onclick="signup()" class="waves-effect waves-light btn-large"><i class="material-icons left">person_pin</i>SignUp</a>
+    <img src="../static/images/volvo.png" id="logo">
+</div>
 </body>
 </html>

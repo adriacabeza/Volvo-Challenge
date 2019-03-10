@@ -1,5 +1,5 @@
 body{
-    background: url("../images/splash_background.jpg") no-repeat center center fixed;
+    background: url("../images/5.jpeg") no-repeat center center fixed;
     filter: brightness(80%);
     background-size: cover;
     height: 100%;
@@ -22,14 +22,14 @@ html {
 }
 
 .div2 {
+    text-align: center;
+    position:relative;
     margin: 50px;
     min-width: 70%;
-    max_height: 30%;
+    height: 40%;
     color: white;
     align-items: center;
-    align: center;
     align-content: center;
-    text-align: center;
 }
 
 #email {
@@ -43,15 +43,15 @@ html {
 #logintext {
      font-family:Roboto,Helvetica,Arial,sans-serif;
     letter-spacing:-1px;
-    font-size:18px;
-    color:#f45844;
+    font-size:28px;
+    color:#eee;
 }
 
 #signuptext {
     font-family:Roboto,Helvetica,Arial,sans-serif;
     letter-spacing:-1px;
-    font-size:16px;
-    color:#f45844;
+    font-size:18px;
+    color:#eee;
 }
 
 #signupbutton {
@@ -101,3 +101,13 @@ html {
  #loginbutton {
     background-color: #f45844;
  }
+
+#logo {
+    position:absolute;
+    bottom:0px;
+    display: block;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+
+}
