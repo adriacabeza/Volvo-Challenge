@@ -10801,8 +10801,8 @@ function moveCar(i) {
 }
 
 function deinitList(){
-  var list = document.getElementById("locationslist");
-  list.innerHTML = "";
+  var ul = document.getElementById("locationslist");
+  while(ul.firstChild) ul.removeChild(ul.firstChild);
 }
 
 function searchRoute() {
@@ -10816,32 +10816,32 @@ function searchRoute() {
     xhReq.send(null);
     console.log(xhReq.responseText);
     var serverResponse = JSON.parse(xhReq.responseText);
-    console.log(serverResponse);
     var suggestions = serverResponse.suggestions;
-    for (var i = 0; i < suggestions.length; ++i) {
-      var row = document.create
+    var i;
+    for (i = 0; i < suggestions.length; ++i) {
+      console.log(i);
+      var row = document.createElement("li");
+      row.className = "collection-item avatar";
         var address = suggestions[i].address;
+        console.log(address);
         var result = ""
         switch (suggestions[i].matchLevel) {
           case "street":
-            result = address.street + " " + address.city + ", " + address.county + ", " + address.state + ", " + address.country;
+            result = address.street + "\n" + address.city + ", " + address.county + "\n" + address.state + ", " + address.country;
             break;
 
           case "district":
-            result = address.district + " " + address.city + ", " + address.county + ", " + address.state + ", " + address.country;
+            result = address.district + "\n" + address.city + "\n" + address.state + ", " + address.country;
             break;
 
           case "city":
-            result = address.city + " " + address.postalCode + ", " + address.county + ", " + address.state + ", " + address.country;
+            result = address.city + " " + address.postalCode + "\n"  + address.county + "\n" + address.state + ", " + address.country;
             break;
         }
-        var strOpt = "res" + (i+1).toString();
-        console.log(strOpt);
-        var res = document.getElementById(strOpt);
-        res.style.visibility = "visible";
-        res.textContent = result;
-      }
-  }
+        console.log(list);
+        row.appendChild(document.createTextNode(result));
+        list.append(row);
+    }
 }
 
 function routeSelected(text) {
@@ -10863,3 +10863,4 @@ function routeSelected(text) {
 }
 
 moveCar(0);
+deinitList();
