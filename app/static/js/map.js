@@ -10862,5 +10862,6 @@ function routeSelected(text) {
     getRoute(latlong);
 }
 
+
 moveCar(0);
 deinitList();
