@@ -1,5 +1,39 @@
 body {
-    background-color: black;
+    background-color: #f4f4f4;
+}
+
+
+/* label color */
+.input-field label {
+    color: #f4f4f4 !important;
+    font-family: Lato, "Helvetica Neue";
+ }
+ 
+ .row .input-field input  {
+   border-bottom: 1px solid #f45844 !important;
+   box-shadow: 0 1px 0 0 #f45844 !important
+ }
+ 
+ .input-field input:focus + label {
+   color: #f4f4f4 !important;
+    font-family: Lato, "Helvetica Neue";
+ }
+ 
+ .input-field input:focus + label {
+   color: #f4f4f4 !important;
+     font-family: Lato, "Helvetica Neue";
+ }
+ /* label underline focus color */
+ .row .input-field input:focus {
+   border-bottom: 1px solid #f4f4f4 !important;
+   box-shadow: 0 1px 0 0 #f4f4f4 !important
+ }
+ 
+
+
+h1,h2,h3,h4,p,a{
+    color: #30303F;
+    font-family: 'Lato', sans-serif !important;
 }
 
 #cam-icon {
@@ -30,4 +64,3 @@ form {
 #selfie, #license {
     margin: 0 auto;
 }
-

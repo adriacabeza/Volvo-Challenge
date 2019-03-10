@@ -1,3 +1,5 @@
+
+
 var mymap = L.map("mapid").setView([47.371637, 8.542088, -0.09], 13);
 
 var geocoder = L.Control.Geocoder.nominatim();

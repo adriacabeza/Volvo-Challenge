@@ -1,0 +1,113 @@
+body{
+    background: url("../images/5.jpeg") no-repeat center center fixed;
+    filter: brightness(80%);
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    min-height: 100%;
+}
+
+html {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+
+.div1 {
+    margin: 10%;
+    min-width: 70%;
+    max_height: 70%;
+}
+
+.div2 {
+    text-align: center;
+    position:relative;
+    margin: 50px;
+    min-width: 70%;
+    height: 40%;
+    color: white;
+    align-items: center;
+    align-content: center;
+}
+
+#email {
+    color: white;
+}
+
+#password {
+    color: white;
+}
+
+#logintext {
+     font-family:Roboto,Helvetica,Arial,sans-serif;
+    letter-spacing:-1px;
+    font-size:28px;
+    color:#eee;
+}
+
+#signuptext {
+    font-family:Roboto,Helvetica,Arial,sans-serif;
+    letter-spacing:-1px;
+    font-size:18px;
+    color:#eee;
+}
+
+#signupbutton {
+        background-color: #e34733;
+
+}
+
+.p1 {
+    font-family:Helvetica Neue,Helvetica,Arial,sans-serif;
+    letter-spacing:-10px;
+    font-size:100px;
+}
+
+.img1 {
+    width: 50%;
+    height: auto;
+    -webkit-filter:invert(100%);
+    filter:progid:DXImageTransform.Microsoft.BasicImage(invert='1');
+}
+
+/* label color */
+.input-field label {
+    color: #eee !important;
+    font-family: Lato, "Helvetica Neue";
+}
+
+.row .input-field input  {
+   border-bottom: 1px solid #eee !important;
+   box-shadow: 0 1px 0 0 #eee !important
+ }
+
+.input-field input:focus + label {
+   color: white !important;
+    font-family: Lato, "Helvetica Neue";
+ }
+
+ .input-field input:focus + label {
+   color: white !important;
+     font-family: Lato, "Helvetica Neue";
+ }
+ /* label underline focus color */
+ .row .input-field input:focus {
+   border-bottom: 1px solid white !important;
+   box-shadow: 0 1px 0 0 white !important
+ }
+
+ #loginbutton {
+    background-color: #f45844;
+ }
+
+#logo {
+    position:absolute;
+    bottom:0px;
+    display: block;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+
+}
