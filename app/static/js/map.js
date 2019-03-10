@@ -10801,16 +10801,13 @@ function moveCar(i) {
 }
 
 function deinitList(){
-  for (var j = 1; j < 5; ++j){
-     var strOpt = "res" + j.toString();
-     var res = document.getElementById(strOpt);
-     res.style.visibility = "hidden";
-     res.textContent = "";
-  }
+  var list = document.getElementById("locationslist");
+  list.innerHTML = "";
 }
 
 function searchRoute() {
   deinitList();
+  var list = document.getElementById("locationslist");
   var query = document.getElementById("search").value;
   console.log(query);
   var xhReq = new XMLHttpRequest();
@@ -10822,7 +10819,7 @@ function searchRoute() {
     console.log(serverResponse);
     var suggestions = serverResponse.suggestions;
     for (var i = 0; i < suggestions.length; ++i) {
-      if(i < 4) {
+      var row = document.create
         var address = suggestions[i].address;
         var result = ""
         switch (suggestions[i].matchLevel) {
