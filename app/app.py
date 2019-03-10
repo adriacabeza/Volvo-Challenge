@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash
 from models.user import User
 from flask import Flask, jsonify, Response, redirect, url_for, request, session, abort, render_template
 from flask_login import LoginManager, UserMixin, \
-login_required, login_user, logout_user 
+login_required, login_user, logout_user, current_user 
 import json
 
 
@@ -24,13 +24,32 @@ lm = LoginManager()
 lm.init_app(app)
 lm.login_view = 'login'
 
+
 @app.route('/')
 def index():
 	return render_template('splash.html',params=None)
 
 @app.route('/login')
 def login():
+	if current_user.is_authenticated:
+		if current_user.owner:	
+			return redirect('/Dashboard')
+		else:
+			return redirect('/home')
+	if request.method == 'POST':
+		username = request.form['name']
+		password = request.form['password']
+		user = User.find_one({"_id": username})
+		if user is None or not user.check_password(password):
+			return redirect('/login')
+		login_user(user)
+		if current_user.owner:	
+			nextPage = '/Dashboard'
+		else:
+			nextPage = '/home'
+		return redirect(next_page)
 	return render_template('login.html',params=None)
+
 
 @lm.user_loader
 def load_user(username):
@@ -39,10 +58,24 @@ def load_user(username):
 		return None
 	return User(u['_id'])
 
+
 @app.route('/home')
 @login_required
-def write():
+def home():
 	return render_template('index.html')
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+	if current_user.owner:
+		return render_template('/Dashboard.html')
+	else:
+		return redirect('/home')
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect('/login')
 
 @app.route('/api/users')
 def getUsers():
@@ -67,7 +100,7 @@ def upload_file():
 				print ("User created.")
 				user = db['users'].find_one({"_id": name})
 				login_user(User(name))
-				return redirect("/")
+				return redirect("/home")
 			except DuplicateKeyError:
 				print ("User already present in DB.")
 		else:
