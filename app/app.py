@@ -29,7 +29,6 @@ lm.login_view = 'login'
 def index():
 	return render_template('splash.html',params=None)
 
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
 	if current_user.is_authenticated:
@@ -71,7 +70,7 @@ def home():
 @login_required
 def dashboard():
 	if current_user.owner:
-		return render_template('/Dashboard.html', crashes = jsonify(list(db['crashes'].find())))
+		return render_template('/Dashboard.html', crashes = list(db['crashes'].find()))
 	else:
 		return redirect('/home')
 

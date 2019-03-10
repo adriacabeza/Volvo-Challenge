@@ -4,14 +4,14 @@ from pymongo.errors import DuplicateKeyError
 import os
 
 data =[
-{"impactAngle":-341.54339233899367,"offsetMaximumForce":20175},
-{"impactAngle":-32.74137379765352,"offsetMaximumForce":1171, "user": "Robert", "date": "27/05/2018", "car": "Volvo V40"},
-{"impactAngle":-308.3000606298933,"offsetMaximumForce":20387, "user": "Michelle", "date": "04/11/2017", "car": "Volvo XC40"},
-{"impactAngle":-84.77214151730084,"offsetMaximumForce":20209, "user": "John", "date": "31/07/2017", "car": "Volvo XC90"},
-{"impactAngle":-159.1955345095375,"offsetMaximumForce":1690, "user": "Johnny", "date": "1/02/2016", "car": "Volvo V90"},
-{"impactAngle":-8.4255066323192,"offsetMaximumForce":5558, "user": "Robert", "date": "30/10/2015", "car": "Volvo S90"},
-{"impactAngle":294.56235398164944,"offsetMaximumForce":20358, "user": "Johnny", "date": "15/10/2015", "car": "Volvo XC60"},
-{"impactAngle":-260.5895797216587,"offsetMaximumForce":5512, "user": "Michelle", "date": "23/08/2015", "car": "Volvo S60"}
+{"impactAngle":-341.54339233899367,"_id":20175, "user": "Robert", "date": "10/03/2019", "car": "Volvo S90"},
+{"impactAngle":-32.74137379765352,"_id":1171, "user": "Robert", "date": "27/05/2018", "car": "Volvo V40"},
+{"impactAngle":-308.3000606298933,"_id":20387, "user": "Michelle", "date": "04/11/2017", "car": "Volvo XC40"},
+{"impactAngle":-84.77214151730084,"_id":20209, "user": "John", "date": "31/07/2017", "car": "Volvo XC90"},
+{"impactAngle":-159.1955345095375,"_id":1690, "user": "Johnny", "date": "1/02/2016", "car": "Volvo V90"},
+{"impactAngle":-8.4255066323192,"_id":5558, "user": "Robert", "date": "30/10/2015", "car": "Volvo S90"},
+{"impactAngle":294.56235398164944,"_id":20358, "user": "Johnny", "date": "15/10/2015", "car": "Volvo XC60"},
+{"impactAngle":-260.5895797216587,"_id":5512, "user": "Michelle", "date": "23/08/2015", "car": "Volvo S60"}
 ]
 
 
