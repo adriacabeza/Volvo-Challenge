@@ -5,7 +5,7 @@
 ## What it does
 Our project provides an interface for both the user and the owner of the cars. Giving the user the possibility to easily rent a car for a trip and giving all the information in one place for the car owner.
 
-How we built it
+## How we built it
 We built it merging many technologies. We created a backend with Flask connected with MongoDB, we implemented a fully-featured login page, face recognition with Deep Learning implemented with Python for KYC (Know your customer). We deployed a Heroku server with Docker.
 
 ## Technical balance
