@@ -104,8 +104,9 @@ def upload_file():
 			try:
 				db['users'].insert({"_id": name, "password": pass_hash, "email": email, "owner": False})
 				print ("User created.")
-				user = db['users'].find_one({"_id": name})
-				login_user(User(email), User(owner))
+				userJson = db['users'].find_one({"_id": name})
+				user = User(userJson['_id'], userJson['email'], userJson['owner'])
+				login_user(user)
 				return redirect("/home")
 			except DuplicateKeyError:
 				print ("User already present in DB.")
