@@ -2,8 +2,13 @@
 
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](http://volvostarthack.herokuapp.com/) ![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)
 
-## Concept / Model
-Our idea...
+![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/777/850/datas/gallery.jpg)
+
+## What it does
+Our project provides an interface for both the user and the owner of the cars. Giving the user the possibility to easily rent a car for a trip and giving all the information in one place for the car owner.
+
+## How we built it
+We built it merging many technologies. We created a backend with Flask connected with MongoDB, we implemented a fully-featured login page, face recognition with Deep Learning implemented with Python for KYC (Know your customer). We deployed a Heroku server with Docker.
 
 ## Technical balance
 
@@ -13,32 +18,12 @@ Our idea...
 - It automatically makes all the registration and login process. Also it checks if the driver license it a driver license. The  **Computer Vision** techniques used were a Deep Learning Convolutional Neural Network Model and OCR.
 - We have the environment created with all the requirements so it would be pretty easy to use it with Docker, Kubernets or so. Actually we have already created the **Dockerfile**. 
 - Out model takes in account several interesting points like: **pricing, gas, routes, etc.** 
-  - The prices model...
-  - The gas ...
-  - The routes ...
-  - The sharing....
+
 
 ## CONS
 - If we had more time we could have tried several architectures and models for the **Computer Vision** section to improve its performance and security. 
 - There is still a lot of variables and features that can be optimized and used. The possibilities are infinite!
 - Even though we created the data in a way to represent reality as much as possible, the data that was used for our optimization models was not real.
-
-## Future ideas and possibilities
-As we already mentioned before the possibilities are infinite. We 
-
-
-## TODO
-- Fer subasta (ebay)
-- Deploy somewhere
-- Improve Register 
-
-
-## TASKS
-[x] Driver license and face ID  
-[x] App (maps and stuff) 
-- Database (models)  **TODO**
-- Sockets  **TODO**
-- Route Optimization (taking someone and share the car and get the reward, the gas stuff, pricing, predict stuff (number of cars we are gonna need or something, use weather) **STARTED**
 
 ## Development
 #### Requirements
@@ -72,4 +57,5 @@ http://localhost:8081/
 
 ## More in detail
 - [faceLogin](https://github.com/adriacabeza/Volvo/tree/master/src/faceLogin)
+- [pricing model](https://github.com/adriacabeza/Volvo-Challenge/blob/william/pricing/pricing.md)
 - [driverLicense & utils](https://github.com/adriacabeza/Volvo/blob/master/src/utils/Utils.md)
