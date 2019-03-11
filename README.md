@@ -57,4 +57,5 @@ http://localhost:8081/
 
 ## More in detail
 - [faceLogin](https://github.com/adriacabeza/Volvo/tree/master/src/faceLogin)
+- [pricing model](https://github.com/adriacabeza/Volvo-Challenge/blob/william/pricing/pricing.md)
 - [driverLicense & utils](https://github.com/adriacabeza/Volvo/blob/master/src/utils/Utils.md)
