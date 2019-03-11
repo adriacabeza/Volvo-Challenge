@@ -4,6 +4,7 @@
 
 ![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/777/850/datas/gallery.jpg)
 
+![](https://github.com/adriacabeza/Volvo-Challenge/tree/master/app/static/images/dashboard.png)
 ## What it does
 Our project provides an interface for both the user and the owner of the cars. Giving the user the possibility to easily rent a car for a trip and giving all the information in one place for the car owner.
 
