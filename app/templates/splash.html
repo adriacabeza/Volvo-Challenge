@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <link rel="icon" type="image/png" href="../static/images/favicon.png">
+    <link rel="icon" type="image/png" href="../static/images/favicon.png">
     <meta charset="UTF-8">
+    <meta name="theme-color" content="#f45844">
     <title>Volvo Share</title><link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/splash.css"/>
+    <link rel="manifest " href="/static/manifest.json">
     <script src="../static/js/splash.js"></script>
 </head>
 <body>
@@ -16,4 +18,32 @@
         <img class="img1" src="../static/images/volvo.png">
     </div>
 </body>
+
+<script>
+
+    var sw;
+        var isSubscribed;
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/static/js/sw.js')
+          .then((registration) => {
+            console.info('Service worker registration successful, scope is:', registration.scope);
+            sw = registration;
+            if ('PushManager' in window) {
+              // console.info('Service Worker and Push is supported');
+              sw.pushManager.getSubscription()
+              .then(function(subscription) {
+                isSubscribed = !(subscription === null);
+                if (isSubscribed) {
+                  console.info('User IS subscribed.');
+                } else {
+                  console.info('User is NOT subscribed.');
+                }
+              });
+            } else {
+              console.warn('Push messaging is not supported');
+            }
+            })
+          .catch((error) => {console.warn('Service worker registration failed, error:', error);});
+        }
+</script>
 </html>

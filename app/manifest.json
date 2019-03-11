@@ -1,16 +1,21 @@
 {
-    "short_name": "Volvo App",
-    "name": "Volvo START Hack App",
-    "start_url": "/",
-    "icons":[
-      {
-        "src":"favicon.ico",
-        "type": "image/ico",
-        "sizes":"16x16"
-
-      }
+    "name": "VolvoShare",
+    "short_name": "VolvoShare",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        }
     ],
-    "orientation": "portrait",
+    "theme_color": "#f45844",
+    "background_color": "#f45844",
+    "start_url": "http://volvostarthack.herokuapp.com/",
     "display": "standalone",
-    "theme_color": "#f77e5e"
-  }
+	"orientation": "portrait"
+}

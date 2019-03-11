@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="manifest " href="../manifest.json" crossorigin="use-credentials">
+  <link rel="manifest " href="/static/manifest.json">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
     crossorigin="" />
+  <meta name="theme-color" content="#f45844">
   <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <link rel="stylesheet" href="../static/css/map.css"/>
@@ -36,7 +37,33 @@
     </div>
 
 </body>
+<script>
 
+var sw;
+    var isSubscribed;
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/static/js/sw.js')
+      .then((registration) => {
+        console.info('Service worker registration successful, scope is:', registration.scope);
+        sw = registration;
+        if ('PushManager' in window) {
+          // console.info('Service Worker and Push is supported');
+          sw.pushManager.getSubscription()
+          .then(function(subscription) {
+            isSubscribed = !(subscription === null);
+            if (isSubscribed) {
+              console.info('User IS subscribed.');
+            } else {
+              console.info('User is NOT subscribed.');
+            }
+          });
+        } else {
+          console.warn('Push messaging is not supported');
+        }
+        })
+      .catch((error) => {console.warn('Service worker registration failed, error:', error);});
+    }
+  </script>
 <script src="../static/js/map.js"></script>
 
 </html>
