@@ -1,7 +1,7 @@
-body{
+html {
     background: url("../images/5.jpeg") no-repeat center center fixed;
     filter: brightness(80%);
-    background-size: cover;
+    background-size:    cover;
     height: 100%;
     overflow: hidden;
     width: 100%;

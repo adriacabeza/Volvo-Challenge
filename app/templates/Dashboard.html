@@ -3,34 +3,46 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" type="image/png" href="../static/images/favicon.png">
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Volvo Company
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-
+  <link rel="icon" type="image/png" href="../static/images/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
   crossorigin=""/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+<link href="../static/css/bootstrap.min.css" rel="stylesheet" />
+<link href="../static/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+<link href="../static/css/demo.css" rel="stylesheet" />
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+  crossorigin=""></script>
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script src="../static/js/data.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="../static/js/perfect-scrollbar.jquery.min.js"></script>
 
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
 
 <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-  crossorigin=""></script>
+crossorigin=""></script>
 <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
 <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-<script src="../static/js/data.js" >
-</script>
+<script src="../static/js/leaflet.rotatedMarker.js"></script>
 
 
-  <link href="../static/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="../static/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
-  <link href="../static/css/demo.css" rel="stylesheet" />
+
+
+
 </head>
 <style>
   .at-floating-card__close {
@@ -216,7 +228,7 @@
                               <th>Date</th>
                               <th>Car</th>
                               <th>User</th>
-                              <th>Diagnosis</th>
+                              <!-- <th>Diagnosis</th> -->
                           </tr>
                         </thead>
                           {% for crash in crashes%}
@@ -224,7 +236,7 @@
                               <td> {{crash['date']}} </td>
                               <td> {{crash['car']}} </td>
                               <td> {{crash['user']}} </td>
-                              <td><a target="_blank" href="http://ordinadorcasa.no-ip.org:6500/api/v1/getCrashImage?timeOffsetMS={{crash['_id']}}"> <i class="fas fa-plus"></i></a> </td>
+                              <!-- <td><a target="_blank" href="http://ordinadorcasa.no-ip.org:6500/api/v1/getCrashImage?timeOffsetMS={{crash['_id']}}"> <i class="fas fa-plus"></i></a> </td> -->
                             </tr>
                             {% endfor %}
                           </table>
@@ -268,22 +280,6 @@ table, th, td {
     </body>
 
     
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-    crossorigin=""></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="../static/js/perfect-scrollbar.jquery.min.js"></script>
-
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
-
-<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-  crossorigin=""></script>
-<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-<script src="../static/js/leaflet.rotatedMarker.js"></script>
 
 
   <script>

@@ -2,6 +2,15 @@
     "short_name": "Volvo App",
     "name": "Volvo START Hack App",
     "start_url": "/",
+    "icons":[
+      {
+        "src":"favicon.ico",
+        "type": "image/ico",
+        "sizes":"16x16"
+
+      }
+    ],
+    "orientation": "portrait",
     "display": "standalone",
-    "orientation": "portrait"
+    "theme_color": "#f77e5e"
   }
