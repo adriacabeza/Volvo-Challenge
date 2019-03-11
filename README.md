@@ -2,6 +2,8 @@
 
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](http://volvostarthack.herokuapp.com/) ![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)
 
+![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/777/850/datas/gallery.jpg)
+
 ## What it does
 Our project provides an interface for both the user and the owner of the cars. Giving the user the possibility to easily rent a car for a trip and giving all the information in one place for the car owner.
 
@@ -22,10 +24,6 @@ We built it merging many technologies. We created a backend with Flask connected
 - If we had more time we could have tried several architectures and models for the **Computer Vision** section to improve its performance and security. 
 - There is still a lot of variables and features that can be optimized and used. The possibilities are infinite!
 - Even though we created the data in a way to represent reality as much as possible, the data that was used for our optimization models was not real.
-
-## Future ideas and possibilities
-As we already mentioned before the possibilities are infinite. We 
-
 
 ## TODO
 - Fer subasta (ebay)
