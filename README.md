@@ -25,12 +25,6 @@ We built it merging many technologies. We created a backend with Flask connected
 - There is still a lot of variables and features that can be optimized and used. The possibilities are infinite!
 - Even though we created the data in a way to represent reality as much as possible, the data that was used for our optimization models was not real.
 
-## TODO
-- Fer subasta (ebay)
-- Deploy somewhere
-- Improve Register 
-
-
 ## Development
 #### Requirements
 Python 3.5+
