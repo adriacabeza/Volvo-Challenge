@@ -86,9 +86,12 @@ Or if you just want to try it out online:
 ## Authors
 - [@adriacabeza](https://github.com/adriacabeza/)
 - [@xlacasa](https://github.com/xlacasa/)
+- [@wborgeaud](https://github.com/wborgeaud/)
 - [@polvallsortiz](https://github.com/polvallsortiz)
+
 
 ## More in detail
 - [faceLogin](https://github.com/adriacabeza/Volvo/tree/master/src/faceLogin)
 - [pricing model](https://github.com/adriacabeza/Volvo-Challenge/blob/william/pricing/pricing.md)
 - [driverLicense & utils](https://github.com/adriacabeza/Volvo/blob/master/src/utils/Utils.md)
+
