@@ -1,6 +1,6 @@
 # An approach to change the way transporting is conceived
 
-[![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](http://volvostarthack.herokuapp.com/) ![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)
+[![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://volvostarthack.herokuapp.com/) ![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)
 
 ![](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/777/850/datas/gallery.jpg)
 
@@ -58,6 +58,33 @@ pip3 install -r requirements.txt
 http://localhost:8081/
 ```
 
+Alternatively, you can just build and run the Docker image:
+
+**1**. Build Docker image
+```bash
+docker build -t volvo .
+```
+
+**2**. Run image
+```bash
+docker run -p 8081:8081 volvo
+```
+
+**3**. Open your browser to here:
+
+```bash
+http://localhost:8081/
+```
+
+Or if you just want to try it out online:
+[Already deployed version](https://volvostarthack.herokuapp.com/)
+***(Note: Since it is deployed on Heroku, if the app hasn't been used in some time, it might need a minute for the servers tu start running once you make a request)***
+
+
+## Authors
+- [@adriacabeza](https://github.com/adriacabeza/)
+- [@xlacasa](https://github.com/xlacasa/)
+- [@polvallsortiz](https://github.com/polvallsortiz)
 
 ## More in detail
 - [faceLogin](https://github.com/adriacabeza/Volvo/tree/master/src/faceLogin)
