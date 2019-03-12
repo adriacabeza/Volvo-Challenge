@@ -80,7 +80,7 @@ Or if you just want to try it out online:
 
 [Already deployed version](https://volvostarthack.herokuapp.com/)
 
-***(Note: Since it is deployed on Heroku, if the app hasn't been used in some time, it might need a minute for the servers tu start running once you make a request)***
+***(Note: Since it is deployed on Heroku, if the app hasn't been used in some time, it might need a minute for the servers to start running once you make a request)***
 
 
 ## Authors
