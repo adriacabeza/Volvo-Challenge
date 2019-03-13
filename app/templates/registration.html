@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Register</title>
     <meta name="theme-color" content="#f45844">
-    <link rel="icon" type="image/png" href="../static/images/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest " href="/static/manifest.json">
@@ -102,5 +101,32 @@
 </body>
 
 <script src="../static/js/registration.js"></script>
+<script>
+
+  var sw;
+      var isSubscribed;
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/static/sw.js')
+        .then((registration) => {
+          console.info('Service worker registration successful, scope is:', registration.scope);
+          sw = registration;
+          if ('PushManager' in window) {
+            // console.info('Service Worker and Push is supported');
+            sw.pushManager.getSubscription()
+            .then(function(subscription) {
+              isSubscribed = !(subscription === null);
+              if (isSubscribed) {
+                console.info('User IS subscribed.');
+              } else {
+                console.info('User is NOT subscribed.');
+              }
+            });
+          } else {
+            console.warn('Push messaging is not supported');
+          }
+          })
+        .catch((error) => {console.warn('Service worker registration failed, error:', error);});
+      }
+</script>
 
 </html>

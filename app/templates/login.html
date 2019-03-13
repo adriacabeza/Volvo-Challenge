@@ -18,7 +18,7 @@
 <form action="/login" method="post">
     <div style="margin: 20%"></div>
     <div class="div1">
-        <div class="row">
+        <div class="row " style="text-align:center;">
             <a id="logintext">Login with your VolvoShare account</a>
         </div>
         <div class="row">
@@ -50,7 +50,7 @@
   var sw;
       var isSubscribed;
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/static/js/sw.js')
+        navigator.serviceWorker.register('/static/sw.js')
         .then((registration) => {
           console.info('Service worker registration successful, scope is:', registration.scope);
           sw = registration;

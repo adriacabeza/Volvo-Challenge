@@ -27,13 +27,13 @@ html {
     margin: 50px;
     min-width: 70%;
     height: 40%;
-    color: white;
+    color: #35342f;
     align-items: center;
     align-content: center;
 }
 
 #password, #name {
-    color: white;
+    color: #35342f;
 }
 
 #logintext {
@@ -70,13 +70,13 @@ html {
 
 /* label color */
 .input-field label {
-    color: #eee !important;
+    color: #35342f !important;
     font-family: Lato, "Helvetica Neue";
 }
 
 .row .input-field input  {
-   border-bottom: 1px solid #eee !important;
-   box-shadow: 0 1px 0 0 #eee !important
+   border-bottom: 1px solid #35342f !important;
+   box-shadow: 0 1px 0 0 #35342f !important
  }
 
 .input-field input:focus + label {

@@ -46,7 +46,7 @@
     ],
     "theme_color": "#f45844",
     "background_color": "#f45844",
-    "start_url": "/",
+    "start_url": "./splash_offline.html",
     "display": "standalone",
 	"orientation": "portrait"
 }
