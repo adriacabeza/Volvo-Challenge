@@ -78,7 +78,7 @@ http://localhost:8081/
 
 Or if you just want to try it out online:
 
-[Already deployed version](https://volvostarthack.herokuapp.com/) <- It must be seen in a smartphone viewport.
+[Already deployed version](https://volvostarthack.herokuapp.com/) <- The client views should be seen using a smartphone viewport (screen size). The admin dashboard should be seen in a computer screen.
 
 ***(Note: Since it is deployed on Heroku, if the app hasn't been used in some time, it might need a minute for the servers to start running once you make a request)***
 
