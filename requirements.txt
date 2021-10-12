@@ -8,7 +8,7 @@ itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.1
 numpy==1.16.2
-opencv-python==4.0.0.21
+opencv-python==4.1.1.26
 Pillow==5.4.1
 pytesseract==0.2.6
 Werkzeug==0.14.1
